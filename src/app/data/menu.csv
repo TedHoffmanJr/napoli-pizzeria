@@ -1,0 +1,55 @@
+id,name,italian_name,description,category,base_price,size_variants,images,available,featured,display_order
+item_001,Chicken Tenders,,Chicken Tenders (5-6) Choice of Sauce,Appetizers,9.99,{},[],TRUE,FALSE,1
+item_002,Utica Greens,,Pancetta - Hot Cherry Peppers - Salami Greens,Appetizers,10.99,{},[],TRUE,FALSE,2
+item_003,Arancini,Arancini,With Marinara Sauce,Appetizers,9.99,{},[],TRUE,FALSE,3
+item_004,Garlic Bread,,Add Cheese - .50,Appetizers,2.75,{},[],TRUE,FALSE,4
+item_005,Buffalo Style Wings,,Mild - Medium - Hot - Honey BBQ - Garlic Butter. Split orders 1.25. All orders come with Blue Cheese. Extra Blue Cheese .75,Wings,13.99,"{""10pc"": 13.99, ""20pc"": 26.99, ""50pc"": 39.99}",[],TRUE,FALSE,5
+item_006,Boneless Wings,,Mild - Medium - Hot - Honey BBQ - Garlic Butter. Split orders 1.25. All orders come with Blue Cheese. Extra Blue Cheese .75,Wings,14,"{""10pc"": 14.00, ""20pc"": 26.00}",[],TRUE,FALSE,6
+item_007,Tossed Salad,,Dressings: House Italian Vinaigrette - Ranch - Blue Cheese. Iceberg Lettuce - Olives - Roasted Red Peppers - Cucumbers - Cherry Tomatoes - Croutons,Salads,7.99,{},[],TRUE,FALSE,7
+item_008,Antipasto,Antipasto,Iceberg Lettuce - Olives - Cherry Tomatoes - Roasted Red Peppers - Fresh Mozzarella - Banana Peppers - Ham - Salami - Provolone Cheese,Salads,14.99,{},[],TRUE,FALSE,8
+item_009,Caprese,Caprese,Fresh Mozzarella Cubed and Layered with Cherry Tomatoes - Fresh Basil Leaves - Topped off with a Drizzle of Balsamic Glaze - Extra Virgin Olive Oil and Pecorino Romano Cheese,Salads,8.99,{},[],TRUE,FALSE,9
+item_010,Grilled Chicken,,A 6oz Piece of Chicken on Top of a Bed of Iceberg Lettuce Garnished with Cherry Tomatoes - Cucumbers - Kalamata Olives,Salads,10.99,{},[],TRUE,FALSE,10
+item_011,Soda,,Proudly Serving Coca-Cola Products,Beverages,0,"{""20 oz"": 0.00, ""2 Liter"": 0.00}",[],TRUE,FALSE,11
+item_012,Bottled Water,,Bottled Water,Beverages,0,{},[],TRUE,FALSE,12
+item_013,Assorted Juices,,Assorted Juices,Beverages,0,{},[],TRUE,FALSE,13
+item_014,Spaghetti or Mezzi Rigatoni Pasta,Spaghetti o Mezzi Rigatoni,A Classic Favorite - A Generous Portion of Rummo Pasta cooked Al Dente with marinara sauce. Add Two Housemade Meatballs or Sausage Links 3.00. (Gluten Free Pasta) Served with 2 Garlic Knots,Entrees,13.99,{},[],TRUE,FALSE,14
+item_015,Chicken Parmigiana,Pollo Parmigiana,Freshly Breaded Chicken Breast Served over Spaghetti or Rigatoni Pasta with Mozzarella Cheese,Entrees,16.99,{},[],TRUE,FALSE,15
+item_016,Eggplant Parmigiana,Melanzane Parmigiana,Thinly Sliced Eggplant layered with Marinara - Mozzarella Baked to Perfection over Spaghetti or Rigatoni Pasta,Entrees,16.99,{},[],TRUE,FALSE,16
+item_017,Chicken & Greens,Pollo e Verdure,Freshly Prepared Chicken Breast Sauteed Golden Brown Topped off with a slice of Ham - Provolone Cheese Baked and Served with a side of Rigatoni and a Generous Portion of Utica Greens and Italian Cheeses,Entrees,16.99,{},[],TRUE,FALSE,17
+item_018,Chicken Riggies,Pollo Riggies,Tender Pieces of Chicken Breast Cherry Peppers Red Onion - Pancetta in a Vodka Sauce with Rigatoni,Entrees,16.99,{},[],TRUE,FALSE,18
+item_019,Chicken Alfredo with Broccoli,Pollo Alfredo con Broccoli,Chicken Alfredo with Broccoli,Entrees,16.99,{},[],TRUE,FALSE,19
+item_020,Italian Sub,Panino Italiano,"On a 12"" Baked Hoagie Roll - Ham - Salami - Pepperoni - Provolone Cheese - Lettuce - Tomato - Onion - Italian Vinaigrette Dressing",Cold Subs,10.99,{},[],TRUE,FALSE,20
+item_021,Chicken Parm Sub,Panino Pollo Parmigiana,,Hot Subs,10.99,{},[],TRUE,FALSE,21
+item_022,Meatball Sub,Panino Polpette,"On a 12"" Baked Hoagie Roll",Hot Subs,10.99,{},[],TRUE,FALSE,22
+item_023,Sausage Sub,Panino Salsiccia,"On a 12"" Baked Hoagie Roll",Hot Subs,10.99,{},[],TRUE,FALSE,23
+item_024,Eggplant Sub,Panino Melanzane,"On a 12"" Baked Hoagie Roll",Hot Subs,10.99,{},[],TRUE,FALSE,24
+item_025,Napoli's Chicken & Greens Sub,Panino Pollo e Verdure Napoli,"On a 12"" Baked Hoagie Roll - Add Cheese 1.50",Hot Subs,10.99,{},[],TRUE,FALSE,25
+item_026,Cannoli,Cannoli,Filled to Order,Desserts,0,{},[],TRUE,FALSE,26
+item_027,Hemstrought's Half Moons,,Pack of 4,Desserts,0,{},[],TRUE,FALSE,27
+item_028,N.Y. Style Cheesecake,,New York Style Cheesecake,Desserts,0,{},[],TRUE,FALSE,28
+item_029,Tiramisu,Tiramisu,Classic Italian Tiramisu,Desserts,0,{},[],TRUE,FALSE,29
+item_030,Chocolate Chip Cookies,,Chocolate Chip Cookies,Desserts,0,{},[],TRUE,FALSE,30
+item_031,Chocolate Cake,,Chocolate Cake,Desserts,0,{},[],TRUE,FALSE,31
+item_032,Napolitana - Thin Crust,Pizza Napolitana,Classic thin crust pizza with cheese,Pizza,13,"{""12\"""": 13.00, ""16\"""": 17.00}",[],TRUE,FALSE,32
+item_033,Sicilian - Thick Crust,Pizza Siciliana,"8 slice 12""x16"" Cheese thick crust pizza",Pizza,22.5,{},[],TRUE,FALSE,33
+item_034,Napoli's Homemade Tomato Pie,Pizza al Pomodoro della Casa,"Choice of Toppings. 12"" - 2.75, 16"" - 3.25. Pepperoni - Italian Sausage - Meatball - Bacon - Grilled or Breaded Chicken - Ham - Green Peppers - Onion - Mushroom - Broccoli - Pineapple - Fresh Garlic - Black Olive - Banana Peppers - Roasted Red Peppers - Anchovies - Extra Cheese",Pizza,17.5,{},[],TRUE,TRUE,34
+item_035,Chicken Wing Pizza,Pizza Chicken Wing,"12"" - 17.99, 16"" - Price listed. Mild, Medium or Hot Sauce. Topped With Breaded Chicken and Mozzarella",Specialty Pizza,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",[],TRUE,FALSE,35
+item_036,Chicken Bacon Ranch Pizza,Pizza Pollo Bacon Ranch,Ranch Dressing Base Topped with Breaded Chicken Mozzarella Cheese - Bacon - Drizzled with Ranch Dressing,Specialty Pizza,21.99,{},[],TRUE,FALSE,36
+item_037,Primavera Pizza,Pizza Primavera,White or Red Sauce Base - Topped with Broccoli Cherry Tomatoes - Spinach - Mozzarella Pecorino Romano and other cheese,Specialty Pizza,21.99,{},[],TRUE,FALSE,37
+item_038,Hawaiian Pizza,Pizza Hawaiana,Pineapple Rings - Bacon - Ham,Specialty Pizza,21.99,{},[],TRUE,FALSE,38
+item_039,Margherita Pizza,Pizza Margherita,Fresh Garlic Base - Cherry Tomatoes - Fresh Basil Loaded with Mozzarella - Pecorino Romano Cheese Drizzled with Balsamic Glaze,Specialty Pizza,21.99,{},[],TRUE,TRUE,39
+item_040,Chicken Parmigiana Pizza,Pizza Pollo Parmigiana,Tender strips of Breaded Chicken on a Red Sauce Smothered with Mozzarella Topped with Fresh Basil,Specialty Pizza,21.99,{},[],TRUE,FALSE,40
+item_041,Napoli's Old Fashioned Pizza,Pizza Old Fashioned Napoli,Mozzarella Base - Topped with our Homemade Marinara Sauce or Pizza Sauce,Specialty Pizza,20.99,{},[],TRUE,FALSE,41
+item_042,Utica Greens Pizza,Pizza Utica Greens,Our Own Homemade Utica Greens - On a White Garlic Base - Topped with Mozzarella - Italian Cheeses,Specialty Pizza,22.99,{},[],TRUE,TRUE,42
+item_043,Grandma's Pizza,Pizza della Nonna,Sicilian Crust Dough - EVOO - Basil - Fresh Mozzarella - Topped with Tomato Sauce - Italian Cheese - Dash of Oregano,Specialty Pizza,21.99,{},[],TRUE,TRUE,43
+item_044,Napoli's Special Pizza,Pizza Speciale Napoli,5 Toppings of Your Choice On a Red or White Sauce,Specialty Pizza,23.99,{},[],TRUE,FALSE,44
+item_045,Cheese Calzone,Calzone al Formaggio,We Start with Ricotta and Mozzarella Cheese. Toppings 1.25: Pepperoni - Sausage - Meatballs - Bacon - Chicken - Mushrooms - Onions - Green Peppers - Spinach Broccoli - Pineapple - Extra Cheese - Garlic,Specialty Items,8.99,{},[],TRUE,FALSE,45
+item_046,Stromboli,Stromboli,Ham - Pepperoni - Green Peppers - Mozzarella Cheese,Specialty Items,8.99,{},[],TRUE,FALSE,46
+item_047,Pepperoni Roll,Panino Pepperoni,Pepperoni - Italian Seasoning - Mozzarella,Specialty Items,7.99,{},[],TRUE,FALSE,47
+item_048,Chicken Wing Calzone,Calzone Chicken Wing,Mozzarella - Ricotta - Mixed with Breaded Chicken Wing Sauce of Your Choice Mild/Medium/Hot/BBQ,Specialty Items,10.99,{},[],TRUE,FALSE,48
+item_049,Homemade Garlic Knots,Nodi all'Aglio della Casa,Homemade Garlic Knots,Specialty Items,0.99,{},[],TRUE,FALSE,49
+item_050,Stuffed Shells,Conchiglie Ripiene,4 Jumbo Shells - Homemade Marinara Sauce Smothered in Mozzarella. (Gluten Free Pasta),Baked Dishes,11.99,{},[],TRUE,FALSE,50
+item_051,Manicotti,Manicotti,3 Tubular Shape Pasta Homemade Marinara Smothered in Mozzarella,Baked Dishes,11.99,{},[],TRUE,FALSE,51
+item_052,Baked Ravioli,Ravioli al Forno,5 Large Ricotta Filled Raviolis Homemade Marinara Sauce Topped with Mozzarella and Baked,Baked Dishes,11.99,{},[],TRUE,FALSE,52
+item_053,Lasagna,Lasagna,Homemade Layers - Ricotta - Mozzarella Beef Lots of Homemade Sauce Baked to Perfection,Baked Dishes,13.99,{},[],TRUE,FALSE,53
+item_054,Baked Ziti,Ziti al Forno,Mezzi Rigatoni Pasta cooked Al Dente Smothered in Sauce - Topped with Mozzarella Baked to a Golden Brown. ADD SAUSAGE LINKS OR MEATBALLS 1.50/each,Baked Dishes,11.99,{},[],TRUE,FALSE,54

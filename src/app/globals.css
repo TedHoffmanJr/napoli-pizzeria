@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Napoli Brand Colors */
+  --napoli-red: #d6132c;
+  --basil-green: #116b14;
+  --pure-white: #ffffff;
+  --soft-gray: #f8f9fa;
+  --medium-gray: #6c757d;
+  --dark-gray: #212529;
+  
+  /* Legacy variables for compatibility */
+  --background: var(--pure-white);
+  --foreground: var(--dark-gray);
 }
 
 @theme inline {
+  --color-napoli-red: var(--napoli-red);
+  --color-basil-green: var(--basil-green);
+  --color-pure-white: var(--pure-white);
+  --color-soft-gray: var(--soft-gray);
+  --color-medium-gray: var(--medium-gray);
+  --color-dark-gray: var(--dark-gray);
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  /* Typography */
+  --font-poppins: var(--font-poppins);
+  --font-alegreya-sans: var(--font-alegreya-sans);
+  --font-inter: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--dark-gray);
+    --foreground: var(--pure-white);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Typography Classes */
+.font-poppins {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.font-alegreya {
+  font-family: var(--font-alegreya-sans), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Brand Color Classes */
+.text-napoli-red {
+  color: var(--napoli-red);
+}
+
+.text-basil-green {
+  color: var(--basil-green);
+}
+
+.bg-napoli-red {
+  background-color: var(--napoli-red);
+}
+
+.bg-basil-green {
+  background-color: var(--basil-green);
+}
+
+.bg-soft-gray {
+  background-color: var(--soft-gray);
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-napoli-red text-pure-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-colors duration-200 font-inter font-semibold;
+}
+
+.btn-secondary {
+  @apply bg-pure-white text-napoli-red border-2 border-napoli-red px-6 py-3 rounded-lg hover:bg-napoli-red hover:text-pure-white transition-colors duration-200 font-inter font-semibold;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-pure-white rounded-lg shadow-md border border-soft-gray overflow-hidden;
+}
+
+/* Utility Classes */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dashed-divider {
+  border-top: 4px solid var(--napoli-red);
+  opacity: 1;
+  border-radius: 2px;
 }
