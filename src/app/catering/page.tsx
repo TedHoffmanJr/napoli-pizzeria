@@ -59,6 +59,7 @@ const cateringPackages = [
 ];
 
 export default function Catering() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -78,115 +79,146 @@ export default function Catering() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to Supabase
-    console.log('Catering inquiry submitted:', formData);
-    alert('Thank you for your catering inquiry! We&apos;ll get back to you within 24 hours.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      eventDate: '',
-      guestCount: '',
-      package: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          type: 'catering'
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          eventDate: '',
+          guestCount: '',
+          package: '',
+          message: ''
+        });
+      } else {
+        alert(result.error || 'Failed to send inquiry. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-pure-white">
       <Navigation />
       
-      {/* Header */}
-      <section className="relative h-[50vh] min-h-[300px] flex items-center justify-center overflow-hidden bg-soft-gray">
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/photos/hero-napoli.jpg"
-            alt="Napoli Pizzeria Catering Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" style={{backgroundColor:'rgba(214,19,44,0.18)'}}></div>
-        </div>
-        <div className="relative z-10 text-center text-pure-white px-4 max-w-3xl mx-auto">
-          <h1 className="font-poppins text-5xl font-semibold mb-4 text-shadow" style={{marginTop:10, marginBottom:10}}>
-            catering services
-          </h1>
-          <p className="font-inter text-xl mb-4 text-shadow">
-            Professional catering for offices, medical centers, and special events
-          </p>
-          <div className="dashed-divider w-24 mx-auto"></div>
+      {/* Direct Action Header */}
+      <section className="bg-pure-white py-8 border-b-2 border-napoli-red">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <h1 className="font-poppins text-3xl sm:text-4xl font-bold text-dark-gray mb-3">
+              Catering That Sells More Pizza
+            </h1>
+            <p className="font-inter text-xl text-napoli-red font-semibold mb-6">
+              Perfect for Medical Centers • <a href="tel:315-218-5837" className="hover:underline">315-218-5837</a> • 48hr Notice Required
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+              <a href="tel:315-218-5837" className="btn-primary text-xl px-12 py-4">
+                CALL FOR QUOTE
+              </a>
+              <button onClick={() => document.getElementById('catering-form')?.scrollIntoView({behavior: 'smooth'})} className="btn-secondary text-xl px-12 py-4">
+                GET QUOTE ONLINE
+              </button>
+            </div>
+            <p className="font-inter text-sm text-medium-gray">
+              ⭐ Perfect for Medical Staff Lunches • Next to North Medical Center
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Catering Packages */}
-      <section className="py-16">
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-poppins text-3xl font-semibold text-dark-gray mb-4">
-              catering packages
+          <div className="text-center mb-8">
+            <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2">
+              Popular Catering Packages
             </h2>
             <p className="font-inter text-lg text-medium-gray">
-              From medical center lunches to corporate events, we have the perfect package for your needs
+              Fresh made when you order • Quality ingredients
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {cateringPackages.map((pkg) => (
-              <div key={pkg.id} className="card group hover:shadow-lg transition-shadow duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {cateringPackages.map((pkg, index) => (
+              <div key={pkg.id} className="bg-pure-white border-2 border-soft-gray rounded-lg hover:border-napoli-red transition-all duration-300 overflow-hidden">
                 <div className="relative h-48 overflow-hidden">
+                  {index === 0 && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="bg-napoli-red text-pure-white text-xs px-3 py-1 rounded-full font-inter font-bold">
+                        MOST POPULAR
+                      </span>
+                    </div>
+                  )}
                   <Image
                     src={pkg.image}
                     alt={pkg.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover"
                   />
                 </div>
                 
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="font-poppins text-xl font-semibold text-dark-gray mb-2">
-                        {pkg.name.toLowerCase()}
-                      </h3>
-                    </div>
+                  <div className="mb-3">
+                    <h3 className="font-poppins text-xl font-bold text-dark-gray mb-1">
+                      {pkg.name}
+                    </h3>
+                    <p className="font-inter text-medium-gray text-sm">
+                      {pkg.description}
+                    </p>
                   </div>
-
-                  <p className="font-inter text-medium-gray text-sm mb-4">
-                    {pkg.description}
-                  </p>
                   
-                  <div className="mb-4">
-                    <span className="font-inter font-bold text-napoli-red text-lg">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="font-inter font-bold text-napoli-red text-2xl">
                       {pkg.price}
+                    </span>
+                    <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
+                      48HR NOTICE
                     </span>
                   </div>
                   
-                  <div className="mb-4">
-                    <h4 className="font-alegreya text-sm text-napoli-red uppercase mb-2">
-                      Includes:
-                    </h4>
-                    <ul className="font-inter text-sm text-medium-gray space-y-1">
-                      {pkg.includes.map((item, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-basil-green mr-2">•</span>
-                          {item}
-                        </li>
+                  <div className="mb-4 p-3 bg-soft-gray rounded-lg">
+                    <p className="font-inter text-xs text-dark-gray font-semibold mb-2">
+                      Package includes:
+                    </p>
+                    <ul className="font-inter text-xs text-medium-gray space-y-1">
+                      {pkg.includes.slice(0, 3).map((item, index) => (
+                        <li key={index}>• {item}</li>
                       ))}
+                      {pkg.includes.length > 3 && (
+                        <li>• +{pkg.includes.length - 3} more items</li>
+                      )}
                     </ul>
                   </div>
                   
-                  <div className="mb-4">
-                    <h4 className="font-alegreya text-sm text-napoli-red uppercase mb-2">
-                      Ideal For:
-                    </h4>
-                    <p className="font-inter text-sm text-medium-gray">
-                      {pkg.idealFor}
-                    </p>
-                  </div>
+                  <button 
+                    onClick={() => document.getElementById('catering-form')?.scrollIntoView({behavior: 'smooth'})} 
+                    className="w-full btn-primary text-lg py-3 font-bold hover:scale-105 transition-transform"
+                  >
+                    GET THIS PACKAGE
+                  </button>
                 </div>
               </div>
             ))}
@@ -195,14 +227,14 @@ export default function Catering() {
       </section>
 
       {/* Catering Inquiry Form */}
-      <section className="py-16 bg-soft-gray">
+      <section id="catering-form" className="py-12 bg-soft-gray">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-poppins text-3xl font-semibold text-dark-gray mb-4">
-              request catering quote
+          <div className="text-center mb-8">
+            <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2">
+              Get Your Catering Quote
             </h2>
             <p className="font-inter text-lg text-medium-gray">
-              Fill out the form below and we&apos;ll get back to you within 24 hours
+              We&apos;ll respond within 24 hours with pricing and availability
             </p>
           </div>
           
@@ -336,9 +368,10 @@ export default function Catering() {
             <div className="mt-8 text-center">
               <button
                 type="submit"
-                className="btn-primary text-lg px-8 py-4"
+                disabled={isSubmitting}
+                className="btn-primary text-lg px-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Catering Request
+                {isSubmitting ? 'Sending...' : 'Submit Catering Request'}
               </button>
             </div>
           </form>

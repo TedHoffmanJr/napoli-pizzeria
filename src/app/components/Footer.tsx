@@ -110,19 +110,15 @@ export default function Footer({ onOrderClick }: FooterProps) {
         <div className="border-t border-medium-gray mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="font-inter text-soft-gray text-sm">
-              <p>© 2024 Napoli Pizzeria. All rights reserved.</p>
-              <p className="mt-1">5194 W. Taft Rd., North Syracuse NY 13212</p>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <p className="font-inter text-soft-gray text-sm">
-                Powered by{' '}
-                <a
-                  href="https://growwithjam.com"
+              <p>© {new Date().getFullYear()} Napoli Pizzeria. All rights reserved.</p>
+              <p className="mt-1">
+                <a 
+                  href="https://www.google.com/maps?sca_esv=7d0b40d4ccf1baac&sxsrf=AE3TifOjiT2tdONIsxp2P3GWtQSgeaRCDw:1754431850099&lsig=AB86z5V_3OvHJY-uRTaGnVI7yqpx&biw=2880&bih=1366&dpr=0.67&um=1&ie=UTF-8&fb=1&gl=us&sa=X&geocode=KaGQjjIA7dmJMSYtIq9idRJw&daddr=5194+W+Taft+Rd,+North+Syracuse,+NY+13212"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-napoli-red hover:text-red-400 transition-colors"
+                  className="hover:text-napoli-red transition-colors"
                 >
-                  JAM Digital
+                  5194 W. Taft Rd., North Syracuse NY 13212
                 </a>
               </p>
             </div>
