@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Footer() {
+interface FooterProps {
+  onOrderClick?: () => void;
+}
+
+export default function Footer({ onOrderClick }: FooterProps) {
   return (
     <footer className="bg-dark-gray text-pure-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -72,18 +76,32 @@ export default function Footer() {
               <Link href="/menu" className="block hover:text-napoli-red transition-colors">
                 Menu
               </Link>
-              <Link href="/specials" className="block hover:text-napoli-red transition-colors">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61566700086836" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:text-napoli-red transition-colors"
+              >
                 Specials
-              </Link>
+              </a>
               <Link href="/catering" className="block hover:text-napoli-red transition-colors">
                 Catering
               </Link>
               <Link href="/story" className="block hover:text-napoli-red transition-colors">
                 Our Story
               </Link>
-              <Link href="/order" className="block hover:text-napoli-red transition-colors">
-                Order Online
-              </Link>
+              {onOrderClick ? (
+                <button 
+                  onClick={onOrderClick}
+                  className="block hover:text-napoli-red transition-colors text-left"
+                >
+                  Order Online
+                </button>
+              ) : (
+                <Link href="/order" className="block hover:text-napoli-red transition-colors">
+                  Order Online
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -3,12 +3,23 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import OrderModal from './OrderModal';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const openOrderModal = () => {
+    setIsOrderModalOpen(true);
+    setIsMenuOpen(false); // Close mobile menu if open
+  };
+
+  const closeOrderModal = () => {
+    setIsOrderModalOpen(false);
   };
 
   return (
@@ -16,13 +27,13 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 pl-8 pr-4 py-2 pt-6">
+          <Link href="/" className="flex items-center py-2">
             <Image
               src="/brand/napoli-logo-main.png"
               alt="Napoli Pizzeria"
               width={180}
               height={60}
-              className="h-16 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
 
@@ -34,18 +45,23 @@ export default function Navigation() {
             <Link href="/menu" className="font-inter text-dark-gray hover:text-napoli-red transition-colors">
               Menu
             </Link>
-            <Link href="/specials" className="font-inter text-dark-gray hover:text-napoli-red transition-colors">
+            <a 
+              href="https://www.facebook.com/profile.php?id=61566700086836" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-inter text-dark-gray hover:text-napoli-red transition-colors"
+            >
               Specials
-            </Link>
+            </a>
             <Link href="/story" className="font-inter text-dark-gray hover:text-napoli-red transition-colors">
               Our Story
             </Link>
             <Link href="/catering" className="font-inter text-dark-gray hover:text-napoli-red transition-colors">
               Catering
             </Link>
-            <Link href="/order" className="btn-primary">
+            <button onClick={openOrderModal} className="btn-primary">
               Order Now
-            </Link>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -83,13 +99,15 @@ export default function Navigation() {
               >
                 Menu
               </Link>
-              <Link
-                href="/specials"
+              <a
+                href="https://www.facebook.com/profile.php?id=61566700086836"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block px-3 py-2 font-inter text-dark-gray hover:text-napoli-red transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Specials
-              </Link>
+              </a>
               <Link
                 href="/story"
                 className="block px-3 py-2 font-inter text-dark-gray hover:text-napoli-red transition-colors"
@@ -104,17 +122,19 @@ export default function Navigation() {
               >
                 Catering
               </Link>
-              <Link
-                href="/order"
-                className="block px-3 py-2 btn-primary text-center"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={openOrderModal}
+                className="block w-full mx-3 my-2 btn-primary text-center"
               >
                 Order Now
-              </Link>
+              </button>
             </div>
           </div>
         )}
       </div>
+      
+      {/* Order Modal */}
+      <OrderModal isOpen={isOrderModalOpen} onClose={closeOrderModal} />
     </nav>
   );
 } 

@@ -55,22 +55,22 @@ export default function Story() {
                 About Us – Napoli Pizzeria
               </h2>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                At Napoli Pizzeria, we believe pizza is more than food — it's a craft, a conversation, and a connection to tradition.
+                At Napoli Pizzeria, we believe pizza is more than food — it&apos;s a craft, a conversation, and a connection to tradition.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
                 Owner and head pizzaiolo <span className="font-semibold text-dark-gray">Mike Perrucci</span> has spent decades in the pizza industry, perfecting his dough, mastering old-school techniques, and staying true to the fundamentals that make a great pie unforgettable. Every pizza that leaves the oven at Napoli is made with purpose — using quality ingredients, consistent technique, and just the right balance of heart and heat.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                Mike's always around — tossing dough, checking the ovens, or chatting with customers at the counter. His philosophy is simple: <span className="italic">"Make the kind of pizza you'd be proud to serve your friends and family — every single time."</span> And it shows.
+                Mike&apos;s always around — tossing dough, checking the ovens, or chatting with customers at the counter. His philosophy is simple: <span className="italic">&quot;Make the kind of pizza you&apos;d be proud to serve your friends and family — every single time.&quot;</span> And it shows.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                We're proud to serve <span className="font-semibold text-dark-gray">authentic NY-style pizza</span> that reflects the best of both worlds: big city flavor, small town hospitality. Whether you're grabbing a slice on your lunch break, feeding the whole family, or catering a group at the hospital down the road — we make sure every order hits the mark.
+                We&apos;re proud to serve <span className="font-semibold text-dark-gray">authentic NY-style pizza</span> that reflects the best of both worlds: big city flavor, small town hospitality. Whether you&apos;re grabbing a slice on your lunch break, feeding the whole family, or catering a group at the hospital down the road — we make sure every order hits the mark.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
                 Mike has had a hand in making some of the local brands what they are today! His experience and passion for pizza have helped shape the Syracuse pizza scene.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                So if you're nearby, stop in and say hey. We'd love to make you something great.
+                So if you&apos;re nearby, stop in and say hey. We&apos;d love to make you something great.
               </p>
               <div className="bg-soft-gray p-6 rounded-lg">
                 <h3 className="font-poppins text-xl font-semibold text-dark-gray mb-3">
@@ -94,14 +94,14 @@ export default function Story() {
                 Our location at 5194 W. Taft Rd. in North Syracuse was carefully chosen 
                 to serve both our neighborhood families and the local medical community. 
                 With over 12,000 vehicles passing through daily and hundreds of medical 
-                professionals nearby, we're perfectly positioned to provide quality 
+                professionals nearby, we&apos;re perfectly positioned to provide quality 
                 Italian cuisine to everyone who needs it.
               </p>
               <p className="font-inter text-lg text-medium-gray mb-6 leading-relaxed">
-                Whether you're a medical professional looking for a quick lunch, a family 
+                Whether you&apos;re a medical professional looking for a quick lunch, a family 
                 planning dinner, or someone in need of catering for a special event, 
                 Napoli Pizzeria is here to serve you with the same care and attention 
-                we'd give our own family.
+                we&apos;d give our own family.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -169,8 +169,8 @@ export default function Story() {
                 community
               </h3>
               <p className="font-inter text-medium-gray">
-                We're proud to serve our local community, from families to medical professionals, 
-                with the same care and attention we'd give our own loved ones.
+                We&apos;re proud to serve our local community, from families to medical professionals, 
+                with the same care and attention we&apos;d give our own loved ones.
               </p>
             </div>
             

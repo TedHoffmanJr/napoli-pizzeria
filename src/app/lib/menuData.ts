@@ -229,7 +229,7 @@ export function getCategories(): string[] {
 
 // Format price
 export function formatPrice(price: number): string {
-  if (price === 0) return "Market Price";
+  if (price === 0) return "Call for Pricing";
   return `$${price.toFixed(2)}`;
 }
 
@@ -238,7 +238,10 @@ export function getSizeVariantsString(sizeVariants: Record<string, number>): str
   if (Object.keys(sizeVariants).length === 0) return "";
   
   const variants = Object.entries(sizeVariants)
-    .map(([size, price]) => `${size}: ${formatPrice(price)}`)
+    .map(([size, price]) => {
+      if (price === 0) return `${size}: Call for pricing`;
+      return `${size}: ${formatPrice(price)}`;
+    })
     .join(", ");
   
   return variants;

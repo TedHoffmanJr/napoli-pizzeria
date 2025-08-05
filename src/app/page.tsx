@@ -1,11 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import { getFeaturedItems, formatPrice } from './utils/menuData';
+import OrderModal from './components/OrderModal';
+import { getFeaturedItems, formatPrice } from './lib/menuData';
+import { getMenuItemImage } from './lib/imageMapping';
 import MenuImage from "./components/MenuImage";
 
 export default function Home() {
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const featuredItems = getFeaturedItems();
 
   return (
@@ -16,25 +22,26 @@ export default function Home() {
       <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-soft-gray">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/photos/cheese-pie-hero.jpg"
+            src="/photos/hero-napoli.jpg"
             alt="Authentic NY-Style Pizza at Napoli Pizzeria"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/40" style={{backgroundColor:'rgba(214,19,44,0.18)'}}></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20"></div>
         </div>
         <div className="relative z-10 text-center text-pure-white px-4 max-w-4xl mx-auto">
-          <h1 className="font-poppins text-5xl md:text-7xl font-semibold mb-4 text-shadow" style={{marginTop:10, marginBottom:10}}>
+          <h1 className="font-poppins text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold mb-6 text-shadow leading-tight">
             authentic ny-style pizza
           </h1>
-          <p className="font-inter text-xl md:text-2xl mb-8 text-shadow">
+          <p className="font-inter text-lg sm:text-xl md:text-2xl mb-8 text-shadow max-w-2xl mx-auto leading-relaxed">
             Old-world quality with new-world hospitality
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/order" className="btn-primary text-lg px-8 py-4">
+            <button onClick={() => setIsOrderModalOpen(true)} className="btn-primary text-lg px-8 py-4">
               Order Online
-            </Link>
+            </button>
             <Link href="/menu" className="btn-secondary text-lg px-8 py-4">
               View Menu
             </Link>
@@ -46,42 +53,49 @@ export default function Home() {
       <section className="py-16 bg-soft-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-poppins text-4xl font-semibold text-dark-gray mb-4">
+            <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-semibold text-dark-gray mb-6 leading-tight">
               our signature dishes
             </h2>
             <div className="dashed-divider w-24 mx-auto"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredItems.slice(0, 3).map((item) => (
-              <div key={item.id} className="card group hover:shadow-lg transition-shadow duration-300">
-                <div className="relative h-64 overflow-hidden">
+              <div key={item.id} className="card group hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="relative h-56 sm:h-64 overflow-hidden">
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-basil-green text-pure-white text-xs px-3 py-1 rounded-full font-alegreya font-bold uppercase tracking-wide shadow-lg">
+                      Featured
+                    </span>
+                  </div>
                   <MenuImage
-                    src={`/menuPics/${item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.jpg`}
+                    src={getMenuItemImage(item.id, item.name, item.category)}
                     alt={item.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-poppins text-xl font-semibold text-dark-gray mb-2">
-                    {item.name.toLowerCase()}
-                  </h3>
-                  {item.italian_name && (
-                    <p className="font-alegreya text-sm text-napoli-red uppercase mb-2">
-                      {item.italian_name}
-                    </p>
-                  )}
-                  <p className="font-inter text-medium-gray text-sm mb-4 line-clamp-2">
+                <div className="p-4 sm:p-6">
+                  <div className="mb-3">
+                    <h3 className="font-poppins text-lg sm:text-xl font-semibold text-dark-gray mb-1 leading-tight">
+                      {item.name.toLowerCase()}
+                    </h3>
+                    {item.italian_name && (
+                      <p className="font-alegreya text-xs sm:text-sm text-napoli-red uppercase">
+                        {item.italian_name}
+                      </p>
+                    )}
+                  </div>
+                  <p className="font-inter text-medium-gray text-sm mb-4 line-clamp-2 leading-relaxed">
                     {item.description}
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="font-inter font-semibold text-napoli-red">
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="font-inter font-bold text-napoli-red text-lg sm:text-xl">
                       {formatPrice(item.base_price)}
                     </span>
-                    <Link href="/order" className="btn-primary text-sm px-4 py-2">
+                    <button onClick={() => setIsOrderModalOpen(true)} className="btn-primary text-sm px-4 py-2 hover:scale-105 transition-transform">
                       Order Now
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -142,9 +156,9 @@ export default function Home() {
               </div>
               <h3 className="font-alegreya text-lg font-bold mb-2 uppercase">Order</h3>
               <div className="space-y-2">
-                <Link href="/order" className="block font-inter text-sm hover:text-red-200 transition-colors">
+                <button onClick={() => setIsOrderModalOpen(true)} className="block font-inter text-sm hover:text-red-200 transition-colors text-left">
                   Order Online
-                </Link>
+                </button>
                 <Link href="/catering" className="block font-inter text-sm hover:text-red-200 transition-colors">
                   Catering
                 </Link>
@@ -159,37 +173,41 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="font-poppins text-4xl font-semibold text-dark-gray mb-6">
+              <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-semibold text-dark-gray mb-6 leading-tight">
                 family-owned since 2024
               </h2>
-              <p className="font-inter text-lg text-medium-gray mb-6">
+              <p className="font-inter text-lg text-medium-gray mb-6 leading-relaxed">
                 Napoli Pizzeria brings authentic NY-style pizza to Syracuse, NY. 
                 Our recipes are rooted in tradition, crafted with care, and served 
                 with the warmth of family hospitality.
               </p>
-              <p className="font-inter text-lg text-medium-gray mb-8">
+              <p className="font-inter text-lg text-medium-gray mb-8 leading-relaxed">
                 Located next to North Medical Center, we&apos;re proud to serve both 
                 our neighborhood families and the local medical community with 
                 quality Italian cuisine.
               </p>
-              <Link href="/story" className="btn-secondary">
+              <Link href="/story" className="btn-secondary text-lg px-6 py-3">
                 Read Our Story
               </Link>
             </div>
             <div className="relative">
               <Image
-                src="/photos/mike-owner.jpg"
+                src="/photos/counter-mike.jpg"
                 alt="Mike Perrucci, Owner of Napoli Pizzeria"
                 width={500}
                 height={400}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-xl"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer onOrderClick={() => setIsOrderModalOpen(true)} />
+      
+      {/* Order Modal */}
+      <OrderModal isOpen={isOrderModalOpen} onClose={() => setIsOrderModalOpen(false)} />
     </div>
   );
 }

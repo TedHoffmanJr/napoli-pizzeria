@@ -10,7 +10,7 @@ const cateringPackages = [
     id: 1,
     name: "Medical Center Lunch",
     description: "Perfect for medical staff and healthcare professionals",
-    price: "Starting at $12.99/person",
+    price: "Call for Pricing",
     includes: [
       "Choice of pizza (2-3 varieties)",
       "Fresh salads",
@@ -26,7 +26,7 @@ const cateringPackages = [
     id: 2,
     name: "Office Catering",
     description: "Professional catering for corporate events and meetings",
-    price: "Starting at $15.99/person",
+    price: "Call for Pricing",
     includes: [
       "Assorted pizzas",
       "Antipasto platter",
@@ -43,7 +43,7 @@ const cateringPackages = [
     id: 3,
     name: "Family Gathering",
     description: "Perfect for family celebrations and special occasions",
-    price: "Starting at $18.99/person",
+    price: "Call for Pricing",
     includes: [
       "Family-style Italian feast",
       "Multiple pizza varieties",
@@ -202,7 +202,7 @@ export default function Catering() {
               request catering quote
             </h2>
             <p className="font-inter text-lg text-medium-gray">
-              Fill out the form below and we'll get back to you within 24 hours
+              Fill out the form below and we&apos;ll get back to you within 24 hours
             </p>
           </div>
           

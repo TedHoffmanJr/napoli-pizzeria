@@ -1,14 +1,14 @@
 'use client';
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
+import { getAvailableMenuImages } from '../lib/imageMapping';
 
-const placeholders = [
-  '/menuPics/placeholders/placeholder1.jpg',
-  '/menuPics/placeholders/placeholder2.jpg',
-];
+interface MenuImageProps extends Omit<ImageProps, 'sizes'> {
+  sizes?: string;
+}
 
-export default function MenuImage(props: ImageProps) {
-  const { src, alt, ...rest } = props;
+export default function MenuImage(props: MenuImageProps) {
+  const { src, alt, sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw", ...rest } = props;
   const [imgSrc, setImgSrc] = useState(src);
   const [fallbackIdx, setFallbackIdx] = useState<number | null>(null);
 
@@ -17,12 +17,14 @@ export default function MenuImage(props: ImageProps) {
       {...rest}
       src={imgSrc}
       alt={alt}
+      sizes={sizes}
       style={{ objectFit: 'cover', ...rest.style }}
       onError={() => {
         if (fallbackIdx === null) {
-          const idx = Math.floor(Math.random() * placeholders.length);
+          const fallbackImages = getAvailableMenuImages();
+          const idx = Math.floor(Math.random() * fallbackImages.length);
           setFallbackIdx(idx);
-          setImgSrc(placeholders[idx]);
+          setImgSrc(fallbackImages[idx]);
         }
       }}
     />

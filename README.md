@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Napoli Pizzeria Website
 
-## Getting Started
+A modern, responsive website for Napoli Pizzeria - authentic NY-style pizza in Syracuse, NY.
 
-First, run the development server:
+## Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+napoli/
+├── docs/                          # Project documentation
+│   ├── napoli-pizzeria-profile-v2.md  # Business profile & requirements
+│   ├── brand-guidelines.md         # Brand colors, fonts, voice
+│   ├── about-us.md                # Story content
+│   └── reference/                 # Design references
+├── public/
+│   ├── brand/                     # Logo files
+│   ├── photos/                    # Business photos
+│   ├── menuPics/                  # Food photos
+│   └── illustrations/             # SVG illustrations
+└── src/
+    └── app/
+        ├── components/            # Reusable React components
+        │   ├── Navigation.tsx     # Main navigation with order modal
+        │   ├── Footer.tsx         # Site footer
+        │   ├── OrderModal.tsx     # Order platform selection modal
+        │   └── MenuImage.tsx      # Smart image component with fallbacks
+        ├── lib/                   # Utilities and data
+        │   ├── menuData.ts        # Menu data processing
+        │   ├── imageMapping.ts    # Smart image mapping
+        │   └── data/
+        │       └── menu.csv       # Menu items data
+        ├── catering/              # Catering page
+        ├── menu/                  # Menu page
+        ├── story/                 # About page
+        ├── specials/              # Links to Facebook
+        └── globals.css            # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Order Modal**: Replaces separate order page with modal containing Toast, Uber Eats, Postmates links
+- **Smart Image Mapping**: Automatically matches menu items to correct food photos with intelligent fallbacks
+- **Mobile-First Design**: Fully responsive with optimized mobile experience
+- **Brand Consistency**: Implements Poppins/Alegreya/Inter typography per brand guidelines
+- **Facebook Integration**: Specials link directly to Facebook for easy management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+```bash
+npm run dev    # Start development server
+npm run build  # Build for production
+npm run lint   # Check code quality
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Brand Guidelines
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Primary Colors**: Napoli Red (#d6132c), Basil Green (#116b14)
+- **Typography**: Poppins (headings), Alegreya Sans (categories), Inter (body)
+- **Voice**: Authentic, experienced, family-oriented, community-focused
+- **Style**: Clean, high-contrast layouts with hand-drawn food illustrations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact Information
 
-## Deploy on Vercel
+- **Address**: 5194 W. Taft Rd., North Syracuse NY 13212
+- **Phone**: 315-218-5837
+- **Facebook**: https://www.facebook.com/profile.php?id=61566700086836
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Powered by [JAM Digital](https://growwithjam.com)**
