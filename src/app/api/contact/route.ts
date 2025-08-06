@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'website@napoli-pizzeria.com', // You may need to verify this domain
-      to: ['mike@napoli-pizzeria.com', 'info@napoli-pizzeria.com'], // Add actual email addresses
+      to: ['ted@growwithagp.com'], // All forms go to Ted
       subject: subject,
       html: emailContent,
       replyTo: email,
