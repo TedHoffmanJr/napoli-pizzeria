@@ -11,20 +11,66 @@ import MenuImage from '../components/MenuImage';
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState<string>('');
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [userClicked, setUserClicked] = useState(false);
   const menuData = getMenuData();
 
+  // Set initial active category
   useEffect(() => {
-    if (menuData.length > 0) {
+    if (menuData.length > 0 && !activeCategory) {
       setActiveCategory(menuData[0].name);
     }
-  }, [menuData]);
+  }, [menuData, activeCategory]);
+
+  // Ultra simple scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (userClicked) return; // Don't update if user just clicked
+      
+      const topOffset = 200; // Account for sticky headers
+      let currentCategory = '';
+      
+      // Find which category is currently at the top
+      for (const category of menuData) {
+        const element = document.getElementById(`category-${category.name}`);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= topOffset) {
+            currentCategory = category.name;
+          }
+        }
+      }
+      
+      if (currentCategory && currentCategory !== activeCategory) {
+        setActiveCategory(currentCategory);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [menuData, userClicked, activeCategory]);
+
+  // Clear user click flag after delay
+  useEffect(() => {
+    if (userClicked) {
+      const timer = setTimeout(() => setUserClicked(false), 800);
+      return () => clearTimeout(timer);
+    }
+  }, [userClicked]);
 
   const scrollToCategory = (categoryName: string) => {
+    setActiveCategory(categoryName);
+    setUserClicked(true); // Prevent auto-update for 1 second
+    
     const element = document.getElementById(`category-${categoryName}`);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - 180;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
-    setActiveCategory(categoryName);
   };
 
   return (
@@ -32,12 +78,12 @@ export default function Menu() {
       <Navigation />
       
       {/* Quick Order Header */}
-      <section className="bg-pure-white py-6 border-b border-soft-gray sticky top-16 z-30">
+      <section className="bg-pure-white py-8 border-b border-soft-gray" id="menu-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div>
               <h1 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray">
-                Pizza & Italian Menu
+                Napoli Pizzeria Menu
               </h1>
               <p className="font-inter text-sm text-medium-gray">
                 📞 <a href="tel:315-218-5837" className="hover:underline">315-218-5837</a> • Fresh Made When You Order • Authentic NY-Style
@@ -56,7 +102,7 @@ export default function Menu() {
       </section>
 
       {/* Sticky Category Navigation */}
-      <div className="sticky top-28 z-40 bg-pure-white shadow-lg border-b border-soft-gray">
+      <div className="sticky top-16 z-40 bg-pure-white shadow-lg border-b border-soft-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex overflow-x-auto scrollbar-hide space-x-2 sm:space-x-4 py-3">
             {menuData.map((category) => (
@@ -80,7 +126,7 @@ export default function Menu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {menuData.map((category) => (
           <div key={category.name} id={`category-${category.name}`} className="mb-16">
-            <div className="text-center mb-8">
+            <div id={`category-header-${category.name}`} className="text-center mb-8 pt-8">
               <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2">
                 {category.name}
               </h2>
@@ -89,7 +135,7 @@ export default function Menu() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.items.map((item) => (
                 <div key={item.id} className="bg-pure-white border-2 border-soft-gray rounded-lg hover:border-napoli-red transition-all duration-300 overflow-hidden group">
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative w-full overflow-hidden bg-soft-gray flex items-center justify-center" style={{aspectRatio: '16/9'}}>
                     {item.featured && (
                       <div className="absolute top-3 left-3 z-10">
                         <span className="bg-napoli-red text-pure-white text-xs px-3 py-1 rounded-full font-inter font-bold">
@@ -101,7 +147,7 @@ export default function Menu() {
                       src={getMenuItemImage(item.id, item.name, item.category)}
                       alt={item.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   
