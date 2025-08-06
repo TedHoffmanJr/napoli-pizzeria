@@ -1,0 +1,56 @@
+id,category,name,italian_name,description,base_price,size_variants,images,available,featured,display_order
+item_001,Appetizers,Chicken Tenders,,Crispy chicken tenders served with your choice of sauce,9.99,{},,TRUE,FALSE,1
+item_002,Appetizers,Utica Greens,,Traditional Utica-style greens with pancetta and hot cherry peppers,10.99,{},,TRUE,FALSE,2
+item_003,Appetizers,Arancini,Arancini,Sicilian rice balls served with marinara sauce,9.99,{},,TRUE,FALSE,3
+item_004,Appetizers,Garlic Bread,,Fresh baked garlic bread,2.75,{},,TRUE,FALSE,4
+item_005,Appetizers,Cheesy Garlic Bread,,Fresh baked garlic bread topped with melted cheese,3.25,{},,TRUE,FALSE,5
+item_006,Appetizers,Homemade Garlic Knots,,Fresh baked garlic knots made daily,0.99,{},,TRUE,FALSE,6
+item_007,Salads,Tossed Salad,,Fresh iceberg lettuce with olives cherry tomatoes roasted red peppers cucumbers and croutons,7.99,{},,TRUE,FALSE,7
+item_008,Salads,Antipasto,Antipasto,Generous Italian salad with fresh mozzarella banana peppers ham salami and provolone cheese,14.99,{},,TRUE,FALSE,8
+item_009,Salads,Caprese,Caprese,Fresh mozzarella layered with cherry tomatoes and basil drizzled with balsamic glaze and olive oil,8.99,{},,TRUE,FALSE,9
+item_010,Salads,Grilled Chicken Salad,,6oz grilled chicken breast over fresh lettuce with cherry tomatoes cucumbers and olives,10.99,{},,TRUE,FALSE,10
+item_011,Wings,Buffalo Style Wings,,Traditional buffalo wings with your choice of sauce,13.99,"{""10pc"": 13.99, ""20pc"": 26.99, ""50pc"": 39.99}",,TRUE,FALSE,11
+item_012,Wings,Boneless Wings,,Tender boneless wings with your choice of sauce,14.00,"{""10pc"": 14.00, ""20pc"": 26.00}",,TRUE,FALSE,12
+item_013,Cold Subs,Italian Sub,Panino Italiano,Ham salami pepperoni and provolone with lettuce tomato onion and Italian vinaigrette,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,13
+item_014,Hot Subs,Chicken Parm Sub,Panino Pollo Parmigiana,Breaded chicken breast with marinara and mozzarella,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,14
+item_015,Hot Subs,Meatball Sub,Panino Polpette,Homemade meatballs with marinara and mozzarella,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,15
+item_016,Hot Subs,Sausage Sub,Panino Salsiccia,Italian sausage with peppers and onions,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,16
+item_017,Hot Subs,Eggplant Sub,Panino Melanzane,Breaded eggplant with marinara and mozzarella,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,17
+item_018,Hot Subs,Napoli's Chicken & Greens Sub,Panino Pollo e Verdure Napoli,Signature chicken and greens combination,10.99,"{""Add Cheese"": 1.50}",,TRUE,FALSE,18
+item_019,Specialty Items,Cheese Calzone,Calzone al Formaggio,Ricotta and mozzarella cheese baked in pizza dough,8.99,{},,TRUE,FALSE,19
+item_020,Specialty Items,Stromboli,Stromboli,Ham pepperoni green peppers and mozzarella rolled in pizza dough,8.99,{},,TRUE,FALSE,20
+item_021,Specialty Items,Pepperoni Roll,Panino Pepperoni,Pepperoni and mozzarella rolled in seasoned dough,7.99,{},,TRUE,FALSE,21
+item_022,Specialty Items,Chicken Wing Calzone,Calzone Chicken Wing,Breaded chicken and ricotta with your choice of wing sauce,10.99,{},,TRUE,FALSE,22
+item_023,Pizza,Napolitana - Thin Crust,Pizza Napolitana,Classic thin crust cheese pizza,13.00,"{""12\"""": 13.00, ""16\"""": 17.00}",,TRUE,FALSE,23
+item_024,Pizza,Sicilian - Thick Crust,Pizza Siciliana,Traditional 8-slice thick crust cheese pizza,22.50,{},,TRUE,FALSE,24
+item_025,Pizza,Napoli's Homemade Tomato Pie,Pizza al Pomodoro della Casa,Our signature tomato pie made fresh daily,17.50,{},,TRUE,TRUE,25
+item_026,Specialty Pizza,Chicken Wing Pizza,Pizza Chicken Wing,Breaded chicken with mozzarella and your choice of wing sauce,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,FALSE,26
+item_027,Specialty Pizza,Chicken Bacon Ranch Pizza,Pizza Pollo Bacon Ranch,Ranch base with breaded chicken mozzarella and bacon,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,FALSE,27
+item_028,Specialty Pizza,Primavera Pizza,Pizza Primavera,Garden vegetables with broccoli cherry tomatoes and spinach,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,FALSE,28
+item_029,Specialty Pizza,Hawaiian Pizza,Pizza Hawaiana,Pineapple rings with bacon and ham,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,FALSE,29
+item_030,Specialty Pizza,Margherita Pizza,Pizza Margherita,Fresh garlic base with cherry tomatoes basil and fresh mozzarella,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,TRUE,30
+item_031,Specialty Pizza,Chicken Parmigiana Pizza,Pizza Pollo Parmigiana,Breaded chicken strips on red sauce with mozzarella and fresh basil,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,FALSE,31
+item_032,Specialty Pizza,Napoli's Old Fashioned Pizza,Pizza Old Fashioned Napoli,Mozzarella base topped with homemade marinara sauce,20.99,"{""12\"""": 17.99, ""16\"""": 20.99}",,TRUE,FALSE,32
+item_033,Specialty Pizza,Utica Greens Pizza,Pizza Utica Greens,Homemade Utica greens on white garlic base with Italian cheeses,22.99,"{""12\"""": 17.99, ""16\"""": 22.99}",,TRUE,TRUE,33
+item_034,Specialty Pizza,Grandma's Pizza,Pizza della Nonna,Sicilian crust with olive oil basil fresh mozzarella and tomato sauce,21.99,"{""12\"""": 17.99, ""16\"""": 21.99}",,TRUE,TRUE,34
+item_035,Specialty Pizza,Napoli's Special Pizza,Pizza Speciale Napoli,Five toppings of your choice on red or white sauce,23.99,"{""12\"""": 17.99, ""16\"""": 23.99}",,TRUE,FALSE,35
+item_036,Entrees,Spaghetti or Mezzi Rigatoni Pasta,Spaghetti o Mezzi Rigatoni,Rummo pasta cooked al dente with marinara sauce served with garlic knots,13.99,"{""Add Meatballs or Sausage"": 3.00}",,TRUE,FALSE,36
+item_037,Entrees,Chicken Parmigiana,Pollo Parmigiana,Breaded chicken breast over pasta with mozzarella cheese,16.99,{},,TRUE,FALSE,37
+item_038,Entrees,Eggplant Parmigiana,Melanzane Parmigiana,Layered eggplant with marinara and mozzarella over pasta,16.99,{},,TRUE,FALSE,38
+item_039,Entrees,Chicken & Greens,Pollo e Verdure,Sautéed chicken breast with ham and provolone served with rigatoni and Utica greens,16.99,{},,TRUE,FALSE,39
+item_040,Entrees,Chicken Riggies,Pollo Riggies,Chicken breast with cherry peppers and pancetta in vodka sauce,16.99,{},,TRUE,FALSE,40
+item_041,Entrees,Chicken Alfredo with Broccoli,Pollo Alfredo con Broccoli,Creamy alfredo sauce with chicken and fresh broccoli,16.99,{},,TRUE,FALSE,41
+item_042,Baked Dishes,Stuffed Shells,Conchiglie Ripiene,Four jumbo shells with homemade marinara and mozzarella,11.99,"{""Add Sausage or Meatball"": 1.50}",,TRUE,FALSE,42
+item_043,Baked Dishes,Manicotti,Manicotti,Three pasta tubes with ricotta and homemade marinara,11.99,"{""Add Sausage or Meatball"": 1.50}",,TRUE,FALSE,43
+item_044,Baked Dishes,Baked Ravioli,Ravioli al Forno,Five large ricotta-filled ravioli with marinara and mozzarella,11.99,"{""Add Sausage or Meatball"": 1.50}",,TRUE,FALSE,44
+item_045,Baked Dishes,Lasagna,Lasagna,Homemade layers of pasta ricotta seasoned beef and mozzarella,13.99,"{""Add Sausage or Meatball"": 1.50}",,TRUE,FALSE,45
+item_046,Baked Dishes,Baked Ziti,Ziti al Forno,Mezzi rigatoni pasta with sauce and mozzarella baked golden brown,11.99,"{""Add Sausage or Meatball"": 1.50}",,TRUE,FALSE,46
+item_047,Beverages,Soda,,Coca-Cola products,2.50,"{""20 oz"": 2.50, ""2 Liter"": 4.00}",,TRUE,FALSE,47
+item_048,Beverages,Bottled Water,,Premium bottled water,1.50,{},,TRUE,FALSE,48
+item_049,Beverages,Assorted Juices,,Orange apple and cranberry juice,2.00,{},,TRUE,FALSE,49
+item_050,Desserts,Cannoli,Cannoli,Traditional cannoli filled fresh to order,4.50,{},,TRUE,FALSE,50
+item_051,Desserts,Hemstrought's Half Moons,,Local Syracuse favorite - pack of 4,3.50,{},,TRUE,FALSE,51
+item_052,Desserts,N.Y. Style Cheesecake,,Classic New York style cheesecake,4.95,{},,TRUE,FALSE,52
+item_053,Desserts,Tiramisu,Tiramisu,Classic Italian tiramisu made fresh,5.95,{},,TRUE,FALSE,53
+item_054,Desserts,Chocolate Chip Cookies,,Fresh baked chocolate chip cookies,2.50,{},,TRUE,FALSE,54
+item_055,Desserts,Chocolate Cake,,Rich chocolate layer cake,4.50,{},,TRUE,FALSE,55

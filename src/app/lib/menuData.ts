@@ -1,8 +1,8 @@
 export interface MenuItem {
   id: string;
   name: string;
-  italian_name: string;
-  description: string;
+  italian_name?: string;
+  description?: string;
   category: string;
   base_price: number;
   size_variants: Record<string, number>;
@@ -14,7 +14,51 @@ export interface MenuItem {
 
 export interface MenuCategory {
   name: string;
+  subtitle?: string;        // "Choice of Dressing", "Available Sauces"
+  shared_options?: string;  // Common options shared across category items
+  display_order: number;
   items: MenuItem[];
+}
+
+// Database-compatible interfaces (for future migration)
+export interface DbMenuItem {
+  id: number;
+  categoryId: number;
+  name: string;
+  italianName?: string;
+  description?: string;
+  basePrice: number;
+  displayOrder: number;
+  featured: boolean;
+  available: boolean;
+  category: DbMenuCategory;
+  variants: ItemVariant[];
+  images: ItemImage[];
+}
+
+export interface DbMenuCategory {
+  id: number;
+  name: string;
+  subtitle?: string;
+  sharedOptions?: string;
+  displayOrder: number;
+  active: boolean;
+  items: DbMenuItem[];
+}
+
+export interface ItemVariant {
+  id: number;
+  itemId: number;
+  variantName: string;
+  priceModifier: number;
+}
+
+export interface ItemImage {
+  id: number;
+  itemId: number;
+  imageUrl: string;
+  altText?: string;
+  isPrimary: boolean;
 }
 
 // Raw menu data from CSV

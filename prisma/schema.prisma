@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuCategory {
+  id            Int        @id @default(autoincrement())
+  name          String     @db.VarChar(100)
+  subtitle      String?    @db.Text
+  sharedOptions String?    @map("shared_options") @db.Text
+  displayOrder  Int        @map("display_order")
+  active        Boolean    @default(true)
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  
+  items         MenuItem[]
+  
+  @@map("menu_categories")
+}
+
+model MenuItem {
+  id           Int            @id @default(autoincrement())
+  categoryId   Int            @map("category_id")
+  name         String         @db.VarChar(200)
+  italianName  String?        @map("italian_name") @db.VarChar(200)
+  description  String?        @db.Text
+  basePrice    Decimal        @map("base_price") @db.Decimal(10, 2)
+  displayOrder Int            @map("display_order")
+  featured     Boolean        @default(false)
+  available    Boolean        @default(true)
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  
+  category     MenuCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  variants     ItemVariant[]
+  images       ItemImage[]
+  
+  @@map("menu_items")
+}
+
+model ItemVariant {
+  id            Int     @id @default(autoincrement())
+  itemId        Int     @map("item_id")
+  variantName   String  @map("variant_name") @db.VarChar(100)
+  priceModifier Decimal @map("price_modifier") @db.Decimal(10, 2)
+  
+  item          MenuItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  
+  @@map("item_variants")
+}
+
+model ItemImage {
+  id       Int     @id @default(autoincrement())
+  itemId   Int     @map("item_id")
+  imageUrl String  @map("image_url") @db.VarChar(500)
+  altText  String? @map("alt_text") @db.VarChar(200)
+  isPrimary Boolean @map("is_primary") @default(false)
+  
+  item     MenuItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  
+  @@map("item_images")
+}
+
+// Category-level shared information
+model CategoryInfo {
+  id         Int    @id @default(autoincrement())
+  categoryId Int    @map("category_id")
+  infoType   String @map("info_type") @db.VarChar(50) // "dressings", "sauces", "toppings"
+  infoText   String @map("info_text") @db.Text
+  
+  @@map("category_info")
+}
