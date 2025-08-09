@@ -7,16 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:migrate": "prisma migrate dev",
-    "db:reset": "prisma migrate reset",
-    "migrate:database": "node scripts/migrate-to-database.js",
-    "images:generate": "node scripts/imagen-generator.js",
-    "images:categories": "node scripts/imagen-generator.js categories",
-    "images:all": "node scripts/imagen-generator.js all",
-    "images:update-style": "node scripts/update-background-style.js"
+    "db:reset": "prisma migrate reset"
   },
   "dependencies": {
     "@google/genai": "^1.12.0",
