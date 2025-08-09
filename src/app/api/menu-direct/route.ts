@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
@@ -52,11 +53,11 @@ export async function GET() {
       sharedOptions: category.sharedOptions,
       displayOrder: category.displayOrder,
       active: category.active,
-      categoryInfo: categoryInfo?.filter(info => info.categoryId === category.id) || [],
+      categoryInfo: categoryInfo?.filter((info: any) => info.categoryId === category.id) || [],
       items: (category.items || [])
-        .filter(item => item.available)
-        .sort((a, b) => a.displayOrder - b.displayOrder)
-        .map(item => ({
+        .filter((item: any) => item.available)
+        .sort((a: any, b: any) => a.displayOrder - b.displayOrder)
+        .map((item: any) => ({
           id: item.id,
           categoryId: item.categoryId,
           name: item.name,
@@ -66,13 +67,13 @@ export async function GET() {
           displayOrder: item.displayOrder,
           featured: item.featured,
           available: item.available,
-          variants: (item.variants || []).map(variant => ({
+          variants: (item.variants || []).map((variant: any) => ({
             id: variant.id,
             itemId: variant.itemId,
             variantName: variant.variantName,
             priceModifier: Number(variant.priceModifier),
           })),
-          images: (item.images || []).map(image => ({
+          images: (item.images || []).map((image: any) => ({
             id: image.id,
             itemId: image.itemId,
             imageUrl: image.imageUrl,
