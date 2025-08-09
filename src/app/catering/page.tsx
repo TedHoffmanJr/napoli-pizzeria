@@ -143,7 +143,7 @@ export default function Catering() {
               </button>
             </div>
             <p className="font-inter text-sm text-medium-gray">
-              ⭐ Perfect for Medical Staff Lunches • Next to North Medical Center
+              ⭐ Perfect for Medical Staff Lunches • Corner of Taft & Buckley Rd
             </p>
           </div>
         </div>

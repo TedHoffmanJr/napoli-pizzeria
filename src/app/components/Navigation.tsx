@@ -33,6 +33,7 @@ export default function Navigation() {
               alt="Napoli Pizzeria"
               width={180}
               height={60}
+              priority
               className="h-12 w-auto"
             />
           </Link>

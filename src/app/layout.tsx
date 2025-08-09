@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY. Family-owned since 2024. Order online for pickup and delivery.",
   keywords: "pizza, Italian food, Syracuse, NY, delivery, takeout, Napoli Pizzeria",
   authors: [{ name: "Mike Perrucci" }],
+  icons: '/brand/favicon-napoli.jpg',
   openGraph: {
     title: "Napoli Pizzeria - Authentic NY-Style Pizza",
     description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY",

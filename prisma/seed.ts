@@ -5,67 +5,82 @@ import { parse } from 'csv-parse/sync';
 
 const prisma = new PrismaClient();
 
-// Category configurations with shared information
+// Category configurations  
 const categoryConfigs = {
   'Appetizers': {
     displayOrder: 1,
     subtitle: null,
-    sharedOptions: null
+    categoryInfo: []
   },
   'Salads': {
     displayOrder: 2,
     subtitle: 'Choice of Dressing',
-    sharedOptions: 'House Italian Vinaigrette • Ranch • Blue Cheese'
+    categoryInfo: [
+      { infoType: 'dressings', infoText: 'House Italian Vinaigrette • Ranch • Blue Cheese' }
+    ]
   },
   'Wings': {
     displayOrder: 3,
     subtitle: 'Available Sauces',
-    sharedOptions: 'Mild • Medium • Hot • Honey BBQ • Garlic Butter • All orders include Blue Cheese • Extra Blue Cheese $0.75'
+    categoryInfo: [
+      { infoType: 'sauces', infoText: 'Mild • Medium • Hot • Honey BBQ • Garlic Butter' },
+      { infoType: 'included', infoText: 'All orders include Blue Cheese • Extra Blue Cheese $0.75 • Split Order (2 sauces) $1.25' }
+    ]
   },
   'Cold Subs': {
     displayOrder: 4,
     subtitle: 'Served on 12" Baked Hoagie Roll',
-    sharedOptions: 'All subs include: Lettuce • Tomato • Onion • Italian Vinaigrette'
+    categoryInfo: [
+      { infoType: 'included', infoText: 'All subs include: Lettuce • Tomato • Onion • Italian Vinaigrette' }
+    ]
   },
   'Hot Subs': {
     displayOrder: 5,
     subtitle: 'Served on 12" Baked Hoagie Roll',
-    sharedOptions: null
+    categoryInfo: []
   },
   'Specialty Items': {
     displayOrder: 6,
     subtitle: null,
-    sharedOptions: 'Calzone Additional Toppings $1.25: Pepperoni • Sausage • Meatballs • Bacon • Chicken • Mushrooms • Onions • Green Peppers • Spinach • Broccoli • Pineapple • Extra Cheese • Garlic'
+    categoryInfo: [
+      { infoType: 'toppings', infoText: 'Calzone Additional Toppings $1.25: Pepperoni • Sausage • Meatballs • Bacon • Chicken • Mushrooms • Onions • Green Peppers • Spinach • Broccoli • Pineapple • Extra Cheese • Garlic' }
+    ]
   },
   'Pizza': {
     displayOrder: 7,
     subtitle: 'Available Toppings',
-    sharedOptions: 'Pepperoni • Italian Sausage • Meatball • Bacon • Grilled or Breaded Chicken • Ham • Green Peppers • Onion • Mushroom • Broccoli • Pineapple • Fresh Garlic • Black Olive • Banana Peppers • Roasted Red Peppers • Anchovies • Extra Cheese'
+    categoryInfo: [
+      { infoType: 'toppings', infoText: 'Pepperoni • Italian Sausage • Meatball • Bacon • Grilled or Breaded Chicken • Ham • Green Peppers • Onion • Mushroom • Broccoli • Pineapple • Fresh Garlic • Black Olive • Banana Peppers • Roasted Red Peppers • Anchovies • Extra Cheese' }
+    ]
   },
   'Specialty Pizza': {
     displayOrder: 8,
     subtitle: 'Gourmet Pizza Creations',
-    sharedOptions: null
+    categoryInfo: []
   },
   'Entrees': {
     displayOrder: 9,
     subtitle: 'Served with 2 Garlic Knots',
-    sharedOptions: 'Gluten Free Pasta Available'
+    categoryInfo: [
+      { infoType: 'options', infoText: 'Gluten Free Pasta Available' }
+    ]
   },
   'Baked Dishes': {
     displayOrder: 10,
     subtitle: 'Gluten Free Pasta Available',
-    sharedOptions: null
+    categoryInfo: [
+      { infoType: 'options', infoText: 'Gluten Free Pasta Available' }
+    ]
   },
   'Beverages': {
     displayOrder: 11,
     subtitle: null,
-    sharedOptions: null
+    categoryInfo: []
   },
   'Desserts': {
     displayOrder: 12,
     subtitle: null,
-    sharedOptions: null
+    categoryInfo: []
   }
 };
 
@@ -94,14 +109,25 @@ async function main() {
 
     const category = await prisma.menuCategory.create({
       data: {
-        name: categoryName,
+        name: categoryName as string,
         subtitle: config.subtitle,
-        sharedOptions: config.sharedOptions,
+        sharedOptions: null, // Remove this since we're using CategoryInfo table
         displayOrder: config.displayOrder,
       },
     });
-    categoryMap.set(categoryName, category.id);
+    categoryMap.set(categoryName as string, category.id);
     console.log(`Created category: ${categoryName}`);
+
+    // Create category info entries
+    for (const info of config.categoryInfo) {
+      await prisma.categoryInfo.create({
+        data: {
+          categoryId: category.id,
+          infoType: info.infoType,
+          infoText: info.infoText,
+        },
+      });
+    }
   }
 
   // Create menu items

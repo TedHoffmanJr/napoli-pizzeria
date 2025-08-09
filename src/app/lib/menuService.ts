@@ -1,24 +1,47 @@
-import { MenuCategory, MenuItem, DbMenuCategory, DbMenuItem } from './menuData';
-import { getMenuData as getStaticMenuData } from './menuData';
+import { MenuCategory, MenuItem } from './menuData';
 
-// Environment flag to switch between static and database
-const USE_DATABASE = process.env.NEXT_PUBLIC_USE_DATABASE === 'true';
+// Database response types
+interface DbVariant {
+  variantName: string;
+  priceModifier: number;
+}
 
-/**
- * Unified menu service that can switch between static and database sources
- */
-export async function getMenuData(): Promise<MenuCategory[]> {
-  if (USE_DATABASE) {
-    return getMenuFromDatabase();
-  } else {
-    return getStaticMenuData();
-  }
+interface DbImage {
+  imageUrl: string;
+}
+
+interface DbMenuItem {
+  id: number;
+  name: string;
+  italianName?: string;
+  description: string;
+  basePrice: number;
+  variants: DbVariant[];
+  images: DbImage[];
+  available: boolean;
+  featured: boolean;
+  displayOrder: number;
+}
+
+interface DbCategoryInfo {
+  id: number;
+  infoType: string;
+  infoText: string;
+}
+
+interface DbMenuCategory {
+  name: string;
+  subtitle?: string;
+  sharedOptions?: string;
+  displayOrder: number;
+  categoryInfo: DbCategoryInfo[];
+  items: DbMenuItem[];
 }
 
 /**
  * Fetch menu data from database API
  */
-async function getMenuFromDatabase(): Promise<MenuCategory[]> {
+export async function getMenuData(): Promise<MenuCategory[]> {
   try {
     const response = await fetch('/api/menu');
     if (!response.ok) {
@@ -33,6 +56,7 @@ async function getMenuFromDatabase(): Promise<MenuCategory[]> {
       subtitle: dbCategory.subtitle,
       shared_options: dbCategory.sharedOptions,
       display_order: dbCategory.displayOrder,
+      categoryInfo: dbCategory.categoryInfo,
       items: dbCategory.items.map((dbItem: DbMenuItem): MenuItem => ({
         id: dbItem.id.toString(),
         name: dbItem.name,
@@ -40,19 +64,19 @@ async function getMenuFromDatabase(): Promise<MenuCategory[]> {
         description: dbItem.description,
         category: dbCategory.name,
         base_price: dbItem.basePrice,
-        size_variants: dbItem.variants.reduce((acc, variant) => {
+        size_variants: dbItem.variants.reduce((acc: Record<string, number>, variant: DbVariant) => {
           acc[variant.variantName] = variant.priceModifier;
           return acc;
         }, {} as Record<string, number>),
-        images: dbItem.images.map(img => img.imageUrl),
+        images: dbItem.images.map((img: DbImage) => img.imageUrl),
         available: dbItem.available,
         featured: dbItem.featured,
         display_order: dbItem.displayOrder,
       })),
     }));
   } catch (error) {
-    console.error('Database menu fetch failed, falling back to static data:', error);
-    return getStaticMenuData();
+    console.error('Database menu fetch failed:', error);
+    throw error;
   }
 }
 

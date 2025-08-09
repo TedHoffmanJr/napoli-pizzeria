@@ -9,7 +9,10 @@
       "WebFetch(domain:github.com)",
       "Bash(node:*)",
       "Bash(rm:*)",
-      "WebFetch(domain:doc.toasttab.com)"
+      "WebFetch(domain:doc.toasttab.com)",
+      "Bash(find:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": []
   }

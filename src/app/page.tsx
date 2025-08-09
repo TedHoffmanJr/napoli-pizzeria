@@ -1,17 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import OrderModal from './components/OrderModal';
-import { getFeaturedItems, formatPrice } from './lib/menuData';
-import { getMenuItemImage } from './lib/imageMapping';
+import { getFeaturedItems } from './lib/menuService';
+import { MenuItem } from './lib/menuData';
 import MenuImage from "./components/MenuImage";
 
 export default function Home() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  const featuredItems = getFeaturedItems();
+  const [featuredItems, setFeaturedItems] = useState<MenuItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load featured items from database
+  useEffect(() => {
+    async function loadFeatured() {
+      try {
+        const items = await getFeaturedItems();
+        setFeaturedItems(items);
+      } catch (error) {
+        console.error('Failed to load featured items:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadFeatured();
+  }, []);
 
   return (
     <div className="min-h-screen bg-pure-white">
@@ -39,7 +55,7 @@ export default function Home() {
               </a>
             </div>
             <p className="font-inter text-sm text-medium-gray">
-              Next to North Medical Center • Authentic NY-Style Pizza
+              Corner of Taft & Buckley Rd • Authentic NY-Style Pizza
             </p>
           </div>
         </div>
@@ -57,39 +73,43 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {featuredItems.slice(0, 3).map((item, index) => (
-              <div key={item.id} className="bg-pure-white border-2 border-soft-gray rounded-lg hover:border-napoli-red transition-all duration-300 overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-napoli-red text-pure-white text-xs px-3 py-1 rounded-full font-inter font-bold">
-                      #{index + 1} MOST POPULAR
-                    </span>
+          {loading ? (
+            <div className="text-center py-8">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-napoli-red mx-auto mb-4"></div>
+              <p className="font-inter text-medium-gray">Loading featured items...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {featuredItems.slice(0, 3).map((item, index) => (
+                <div key={item.id} className="bg-pure-white border-2 border-soft-gray rounded-lg hover:border-napoli-red transition-all duration-300 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="bg-napoli-red text-pure-white text-xs px-3 py-1 rounded-full font-inter font-bold">
+                        #{index + 1} MOST POPULAR
+                      </span>
+                    </div>
+                    <MenuImage
+                      src={item.images[0] || '/brand/social-preview.jpg'}
+                      alt={item.name}
+                      fill
+                      priority={index === 0} // First featured item gets priority
+                      className="object-cover"
+                    />
                   </div>
-                  <MenuImage
-                    src={getMenuItemImage(item.id, item.name, item.category)}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="mb-3">
-                    <h3 className="font-poppins text-xl font-bold text-dark-gray mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="font-inter text-medium-gray text-sm leading-relaxed">
-                      Fresh ingredients, crispy crust, melted cheese
-                    </p>
-                  </div>
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="font-inter font-bold text-napoli-red text-2xl">
-                      {formatPrice(item.base_price)}
-                    </span>
-                    <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
-                      FRESH MADE
-                    </span>
-                  </div>
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <h3 className="font-poppins text-xl font-bold text-dark-gray mb-1">
+                        {item.name}
+                      </h3>
+                      <p className="font-inter text-medium-gray text-sm leading-relaxed">
+                        {item.description || 'Fresh ingredients, authentic NY-style preparation'}
+                      </p>
+                    </div>
+                    <div className="mb-4">
+                      <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
+                        FRESH MADE
+                      </span>
+                    </div>
                   <button 
                     onClick={() => setIsOrderModalOpen(true)} 
                     className="w-full btn-primary text-lg py-3 font-bold hover:scale-105 transition-transform"
@@ -98,8 +118,9 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -135,7 +156,7 @@ export default function Home() {
                 >
                   5194 W. Taft Rd, North Syracuse
                 </a><br />
-                (Next to North Medical Center)
+                (Corner of Taft & Buckley Rd)
               </p>
             </div>
             <div>

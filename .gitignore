@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI-generated content (temporary folders)
+public/ai-images/
+public/menu-images/
+public/menu-images-temp/
+scripts/organize-*.js
+scripts/compress-*.js
+image-mapping.json
+
+# Keep only final compressed images
+!public/menu-images-compressed/

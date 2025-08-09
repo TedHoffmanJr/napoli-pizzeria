@@ -4,15 +4,33 @@ import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import OrderModal from '../components/OrderModal';
-import { getMenuData, formatPrice, getSizeVariantsString } from '../lib/menuData';
-import { getMenuItemImage } from '../lib/imageMapping';
+import { getMenuData } from '../lib/menuService';
+import { MenuCategory } from '../lib/menuData';
 import MenuImage from '../components/MenuImage';
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState<string>('');
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [userClicked, setUserClicked] = useState(false);
-  const menuData = getMenuData();
+  const [menuData, setMenuData] = useState<MenuCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  // Load menu data from database
+  useEffect(() => {
+    async function loadMenu() {
+      try {
+        const data = await getMenuData();
+        setMenuData(data);
+      } catch (error) {
+        console.error('Failed to load menu:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadMenu();
+  }, []);
 
   // Set initial active category
   useEffect(() => {
@@ -73,6 +91,61 @@ export default function Menu() {
     }
   };
 
+  // Category bar scroll functions
+  const scrollCategoryBar = (direction: 'left' | 'right') => {
+    const container = document.getElementById('category-scroll-container');
+    if (container) {
+      const scrollAmount = 200;
+      const newScrollLeft = direction === 'left' 
+        ? container.scrollLeft - scrollAmount
+        : container.scrollLeft + scrollAmount;
+      
+      container.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Check scroll position for arrows
+  const handleCategoryScroll = () => {
+    const container = document.getElementById('category-scroll-container');
+    if (container) {
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(
+        container.scrollLeft < (container.scrollWidth - container.clientWidth - 10)
+      );
+    }
+  };
+
+  // Set up arrow visibility on load
+  useEffect(() => {
+    if (menuData.length > 0) {
+      setTimeout(() => {
+        handleCategoryScroll();
+        const container = document.getElementById('category-scroll-container');
+        if (container) {
+          container.addEventListener('scroll', handleCategoryScroll);
+          return () => container.removeEventListener('scroll', handleCategoryScroll);
+        }
+      }, 100);
+    }
+  }, [menuData]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-pure-white">
+        <Navigation />
+        <div className="flex items-center justify-center h-96">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-napoli-red mx-auto mb-4"></div>
+            <p className="font-inter text-medium-gray">Loading menu...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-pure-white">
       <Navigation />
@@ -104,20 +177,52 @@ export default function Menu() {
       {/* Sticky Category Navigation */}
       <div className="sticky top-16 z-40 bg-pure-white shadow-lg border-b border-soft-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto scrollbar-hide space-x-2 sm:space-x-4 py-3">
-            {menuData.map((category) => (
+          <div className="relative">
+            {/* Left Arrow - Desktop Only */}
+            {showLeftArrow && (
               <button
-                key={category.name}
-                onClick={() => scrollToCategory(category.name)}
-                className={`font-inter text-xs sm:text-sm font-bold uppercase whitespace-nowrap px-4 py-2 rounded-lg transition-all duration-200 ${
-                  activeCategory === category.name
-                    ? 'bg-napoli-red text-pure-white shadow-md'
-                    : 'text-dark-gray hover:text-napoli-red hover:bg-soft-gray'
-                }`}
+                onClick={() => scrollCategoryBar('left')}
+                className="hidden lg:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-pure-white shadow-lg rounded-full w-10 h-10 items-center justify-center hover:bg-soft-gray transition-colors border border-soft-gray"
+                aria-label="Scroll categories left"
               >
-                {category.name}
+                <svg className="w-5 h-5 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
               </button>
-            ))}
+            )}
+
+            {/* Category Buttons */}
+            <div 
+              id="category-scroll-container"
+              className="flex overflow-x-auto scrollbar-hide space-x-2 sm:space-x-4 py-3 sm:justify-start lg:justify-start lg:pl-12 lg:pr-12"
+            >
+              {menuData.map((category) => (
+                <button
+                  key={category.name}
+                  onClick={() => scrollToCategory(category.name)}
+                  className={`font-inter text-xs sm:text-sm font-bold uppercase whitespace-nowrap px-4 py-2 rounded-lg transition-all duration-200 ${
+                    activeCategory === category.name
+                      ? 'bg-napoli-red text-pure-white shadow-md'
+                      : 'text-dark-gray hover:text-napoli-red hover:bg-soft-gray'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Right Arrow - Desktop Only */}
+            {showRightArrow && (
+              <button
+                onClick={() => scrollCategoryBar('right')}
+                className="hidden lg:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-pure-white shadow-lg rounded-full w-10 h-10 items-center justify-center hover:bg-soft-gray transition-colors border border-soft-gray"
+                aria-label="Scroll categories right"
+              >
+                <svg className="w-5 h-5 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -130,6 +235,40 @@ export default function Menu() {
               <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2">
                 {category.name}
               </h2>
+              {category.subtitle && (
+                <p className="font-inter text-lg text-napoli-red font-semibold mb-3">
+                  {category.subtitle}
+                </p>
+              )}
+              
+              {/* Display category info (dressings, sauces, toppings) */}
+              {category.categoryInfo && category.categoryInfo.length > 0 && (
+                <div className="max-w-4xl mx-auto space-y-2">
+                  {category.categoryInfo.map((info) => (
+                    <div key={info.id} className="text-center">
+                      <p className="font-inter text-sm font-semibold text-dark-gray capitalize mb-1">
+                        {info.infoType === 'dressings' && '🥗 Available Dressings:'}
+                        {info.infoType === 'sauces' && '🌶️ Available Sauces:'}
+                        {info.infoType === 'toppings' && '🍕 Available Toppings:'}
+                        {info.infoType === 'included' && '✅ Included:'}
+                        {info.infoType === 'options' && '⚙️ Options:'}
+                        {!['dressings', 'sauces', 'toppings', 'included', 'options'].includes(info.infoType) && `${info.infoType}:`}
+                      </p>
+                      <p className="font-inter text-sm text-medium-gray leading-relaxed">
+                        {info.infoText}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {category.shared_options && (
+                <div className="max-w-3xl mx-auto mt-3">
+                  <p className="font-inter text-sm text-medium-gray">
+                    {category.shared_options}
+                  </p>
+                </div>
+              )}
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -144,9 +283,10 @@ export default function Menu() {
                       </div>
                     )}
                     <MenuImage
-                      src={getMenuItemImage(item.id, item.name, item.category)}
+                      src={item.images[0] || '/brand/social-preview.jpg'}
                       alt={item.name}
                       fill
+                      priority={category.display_order === 1 && item.display_order <= 6} // First category's first 6 items get priority
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -161,19 +301,18 @@ export default function Menu() {
                       </p>
                     </div>
                     
-                    <div className="mb-4">
-                      <span className="font-inter font-bold text-napoli-red text-2xl">
-                        {formatPrice(item.base_price)}
-                      </span>
-                    </div>
+                    {/* Removed pricing display - customers will see pricing when ordering */}
                     
                     {Object.keys(item.size_variants).length > 0 && (
                       <div className="mb-4 p-3 bg-soft-gray rounded-lg">
                         <p className="font-inter text-xs text-dark-gray font-semibold mb-1">
-                          Multiple sizes available
+                          {/* Smart variant labeling based on variant names */}
+                          {Object.keys(item.size_variants).some(v => v.toLowerCase().includes('inch') || v.toLowerCase().includes('size') || v.toLowerCase().includes('small') || v.toLowerCase().includes('large')) 
+                            ? 'Multiple sizes available' 
+                            : 'Additional options available'}
                         </p>
                         <p className="font-inter text-xs text-medium-gray">
-                          {getSizeVariantsString(item.size_variants)}
+                          {Object.entries(item.size_variants).map(([name]) => name).join(' • ')}
                         </p>
                       </div>
                     )}
