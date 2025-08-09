@@ -76,7 +76,10 @@ const rawMenuData: MenuItem[] = [
     id: "item_004", name: "Garlic Bread", italian_name: "", description: "Add Cheese - .50", category: "Appetizers", base_price: 2.75, size_variants: {}, images: [], available: true, featured: false, display_order: 4
   },
   {
-    id: "item_005", name: "Buffalo Style Wings", italian_name: "", description: "Mild - Medium - Hot - Honey BBQ - Garlic Butter. Split orders 1.25. All orders come with Blue Cheese. Extra Blue Cheese .75", category: "Wings", base_price: 13.99, size_variants: {"10pc": 13.99, "20pc": 26.99, "50pc": 39.99}, images: [], available: true, featured: false, display_order: 5
+    id: "item_005a", name: "Garlic Knots", italian_name: "", description: "Six homemade garlic knots with garlic butter, parsley, and parmesan", category: "Appetizers", base_price: 5.99, size_variants: {}, images: [], available: true, featured: false, display_order: 5
+  },
+  {
+    id: "item_005", name: "Buffalo Style Wings", italian_name: "", description: "Mild - Medium - Hot - Honey BBQ - Garlic Butter. Split orders 1.25. All orders come with Blue Cheese. Extra Blue Cheese .75", category: "Wings", base_price: 13.99, size_variants: {"10pc": 13.99, "20pc": 26.99, "50pc": 39.99}, images: [], available: true, featured: false, display_order: 6
   },
   {
     id: "item_006", name: "Boneless Wings", italian_name: "", description: "Mild - Medium - Hot - Honey BBQ - Garlic Butter. Split orders 1.25. All orders come with Blue Cheese. Extra Blue Cheese .75", category: "Wings", base_price: 14, size_variants: {"10pc": 14.00, "20pc": 26.00}, images: [], available: true, featured: false, display_order: 6
