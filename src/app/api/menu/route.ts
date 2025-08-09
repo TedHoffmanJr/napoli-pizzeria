@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
+import { prisma } from '../../../lib/db';
 
 export async function GET() {
   try {
+    console.log('Starting menu API request...');
+    console.log('DATABASE_URL configured:', !!process.env.DATABASE_URL);
+    console.log('Environment:', process.env.NODE_ENV);
+    
     const categories = await prisma.menuCategory.findMany({
       where: { active: true },
       include: {
@@ -80,8 +84,16 @@ export async function GET() {
     return NextResponse.json({ categories: menuData });
   } catch (error) {
     console.error('Error fetching menu:', error);
+    console.error('Error details:', {
+      name: error instanceof Error ? error.name : 'Unknown',
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined
+    });
     return NextResponse.json(
-      { error: 'Failed to fetch menu data' },
+      { 
+        error: 'Failed to fetch menu data',
+        details: error instanceof Error ? error.message : String(error)
+      },
       { status: 500 }
     );
   }
