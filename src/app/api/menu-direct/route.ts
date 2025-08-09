@@ -12,7 +12,20 @@ export async function GET() {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    console.log('Supabase client created, fetching categories...');
+    console.log('Supabase client created, testing connection...');
+    
+    // Test basic connectivity
+    const { data: testData, error: testError } = await supabase
+      .from('MenuCategory')
+      .select('count')
+      .limit(1);
+      
+    if (testError) {
+      console.error('Supabase connection test failed:', testError);
+      throw testError;
+    }
+    
+    console.log('Connection test passed, fetching categories...');
 
     // Fetch categories with items
     const { data: categories, error: categoriesError } = await supabase
@@ -93,16 +106,36 @@ export async function GET() {
 
   } catch (error) {
     console.error('Direct Supabase fetch failed:', error);
+    
+    // Better error serialization
+    let errorMessage = 'Unknown error';
+    let errorDetails = {};
+    
+    if (error instanceof Error) {
+      errorMessage = error.message;
+      errorDetails = {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      };
+    } else if (typeof error === 'object' && error !== null) {
+      errorMessage = JSON.stringify(error);
+      errorDetails = error;
+    } else {
+      errorMessage = String(error);
+    }
+    
     return NextResponse.json({
       success: false,
-      error: error instanceof Error ? error.message : String(error),
+      error: errorMessage,
       details: {
-        name: error instanceof Error ? error.name : 'Unknown',
+        ...errorDetails,
         method: 'supabase-direct'
       },
       environment: {
         hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
         hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+        supabaseUrlPrefix: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30) + '...',
       }
     }, { status: 500 });
   }
