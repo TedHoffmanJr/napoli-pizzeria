@@ -15,7 +15,7 @@ export async function GET() {
     console.log('Supabase client created, testing connection...');
     
     // Test basic connectivity
-    const { data: testData, error: testError } = await supabase
+    const { error: testError } = await supabase
       .from('MenuCategory')
       .select('count')
       .limit(1);
