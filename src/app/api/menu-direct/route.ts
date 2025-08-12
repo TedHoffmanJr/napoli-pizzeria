@@ -60,39 +60,29 @@ export async function GET() {
 
     // Transform the data to match your frontend format
     const menuData = categories?.map(category => ({
-      id: category.id,
       name: category.name,
       subtitle: category.subtitle,
-      sharedOptions: category.shared_options,
-      displayOrder: category.display_order,
-      active: category.active,
+      shared_options: category.shared_options,
+      display_order: category.display_order,
       categoryInfo: categoryInfo?.filter((info: any) => info.category_id === category.id) || [],
       items: (category.items || [])
         .filter((item: any) => item.available)
         .sort((a: any, b: any) => a.display_order - b.display_order)
         .map((item: any) => ({
-          id: item.id,
-          categoryId: item.category_id,
+          id: item.id.toString(),
           name: item.name,
-          italianName: item.italian_name,
+          italian_name: item.italian_name,
           description: item.description,
-          basePrice: Number(item.base_price),
-          displayOrder: item.display_order,
-          featured: item.featured,
+          category: category.name,
+          base_price: Number(item.base_price),
+          size_variants: (item.variants || []).reduce((acc: any, variant: any) => {
+            acc[variant.variant_name] = Number(variant.price_modifier);
+            return acc;
+          }, {}),
+          images: (item.images || []).map((image: any) => image.image_url),
           available: item.available,
-          variants: (item.variants || []).map((variant: any) => ({
-            id: variant.id,
-            itemId: variant.item_id,
-            variantName: variant.variant_name,
-            priceModifier: Number(variant.price_modifier),
-          })),
-          images: (item.images || []).map((image: any) => ({
-            id: image.id,
-            itemId: image.item_id,
-            imageUrl: image.image_url,
-            altText: image.alt_text,
-            isPrimary: image.is_primary,
-          })),
+          featured: item.featured,
+          display_order: item.display_order,
         }))
     })) || [];
 
