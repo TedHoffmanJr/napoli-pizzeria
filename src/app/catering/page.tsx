@@ -20,7 +20,7 @@ const cateringPackages = [
       "Minimum 10 people"
     ],
     idealFor: "Medical offices, clinics, healthcare facilities",
-    image: "/photos/food-case.jpg"
+    image: "/brand/slices-lunch.webp"
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const cateringPackages = [
       "Minimum 15 people"
     ],
     idealFor: "Corporate meetings, office parties, business events",
-    image: "/photos/counter-mike.jpg"
+    image: "/brand/office-catering.webp"
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const cateringPackages = [
       "Minimum 20 people"
     ],
     idealFor: "Birthdays, anniversaries, family reunions",
-    image: "/photos/cheese-pie-hero.jpg"
+    image: "/brand/family-deal.webp"
   }
 ];
 
@@ -251,7 +251,7 @@ export default function Catering() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -266,7 +266,7 @@ export default function Catering() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -281,7 +281,7 @@ export default function Catering() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -295,7 +295,7 @@ export default function Catering() {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -310,7 +310,7 @@ export default function Catering() {
                   value={formData.eventDate}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -326,7 +326,7 @@ export default function Catering() {
                   onChange={handleInputChange}
                   required
                   min="10"
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 />
               </div>
               
@@ -339,7 +339,7 @@ export default function Catering() {
                   name="package"
                   value={formData.package}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white"
                 >
                   <option value="">Select a package</option>
                   <option value="medical">Medical Center Lunch</option>
@@ -360,7 +360,7 @@ export default function Catering() {
                   onChange={handleInputChange}
                   rows={4}
                   placeholder="Tell us about your event, dietary restrictions, or special requests..."
-                  className="w-full px-4 py-3 border border-soft-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-transparent font-inter resize-none"
+                  className="w-full px-4 py-3 border-2 border-medium-gray rounded-lg focus:ring-2 focus:ring-napoli-red focus:border-napoli-red font-inter text-dark-gray bg-white resize-none"
                 ></textarea>
               </div>
             </div>

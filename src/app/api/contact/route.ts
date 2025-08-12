@@ -5,7 +5,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Contact API called');
+    console.log('RESEND_API_KEY present:', !!process.env.RESEND_API_KEY);
+    
     const body = await request.json();
+    console.log('Request body:', body);
+    
     const { name, email, phone, company, eventDate, guestCount, package: packageType, message, type } = body;
 
     // Validate required fields

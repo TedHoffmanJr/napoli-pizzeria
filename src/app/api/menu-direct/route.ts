@@ -64,7 +64,11 @@ export async function GET() {
       subtitle: category.subtitle,
       shared_options: category.shared_options,
       display_order: category.display_order,
-      categoryInfo: categoryInfo?.filter((info: any) => info.category_id === category.id) || [],
+      categoryInfo: categoryInfo?.filter((info: any) => info.category_id === category.id).map((info: any) => ({
+        id: info.id,
+        infoType: info.info_type,
+        infoText: info.info_text
+      })) || [],
       items: (category.items || [])
         .filter((item: any) => item.available)
         .sort((a: any, b: any) => a.display_order - b.display_order)

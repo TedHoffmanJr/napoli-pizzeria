@@ -19,7 +19,7 @@ export default function Story() {
             {/* Mike's Photo */}
             <div className="relative">
               <Image
-                src="/photos/mike-owner.jpg"
+                src="/brand/mike-award.webp"
                 alt="Mike Perrucci, Owner of Napoli Pizzeria"
                 width={600}
                 height={800}
