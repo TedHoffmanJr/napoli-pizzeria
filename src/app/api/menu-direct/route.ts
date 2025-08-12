@@ -14,9 +14,9 @@ export async function GET() {
 
     console.log('Supabase client created, testing connection...');
     
-    // Test basic connectivity
+    // Test basic connectivity  
     const { error: testError } = await supabase
-      .from('MenuCategory')
+      .from('menu_categories')
       .select('count')
       .limit(1);
       
@@ -29,16 +29,16 @@ export async function GET() {
 
     // Fetch categories with items
     const { data: categories, error: categoriesError } = await supabase
-      .from('MenuCategory')
+      .from('menu_categories')
       .select(`
         *,
-        items:MenuItem(*,
-          variants:ItemVariant(*),
-          images:ItemImage(*)
+        items:menu_items(*,
+          variants:item_variants(*),
+          images:item_images(*)
         )
       `)
       .eq('active', true)
-      .order('displayOrder');
+      .order('display_order');
 
     if (categoriesError) {
       throw categoriesError;
@@ -48,9 +48,9 @@ export async function GET() {
 
     // Fetch category info
     const { data: categoryInfo, error: infoError } = await supabase
-      .from('CategoryInfo')
+      .from('category_info')
       .select('*')
-      .order('categoryId');
+      .order('category_id');
 
     if (infoError) {
       throw infoError;
@@ -63,35 +63,35 @@ export async function GET() {
       id: category.id,
       name: category.name,
       subtitle: category.subtitle,
-      sharedOptions: category.sharedOptions,
-      displayOrder: category.displayOrder,
+      sharedOptions: category.shared_options,
+      displayOrder: category.display_order,
       active: category.active,
-      categoryInfo: categoryInfo?.filter((info: any) => info.categoryId === category.id) || [],
+      categoryInfo: categoryInfo?.filter((info: any) => info.category_id === category.id) || [],
       items: (category.items || [])
         .filter((item: any) => item.available)
-        .sort((a: any, b: any) => a.displayOrder - b.displayOrder)
+        .sort((a: any, b: any) => a.display_order - b.display_order)
         .map((item: any) => ({
           id: item.id,
-          categoryId: item.categoryId,
+          categoryId: item.category_id,
           name: item.name,
-          italianName: item.italianName,
+          italianName: item.italian_name,
           description: item.description,
-          basePrice: Number(item.basePrice),
-          displayOrder: item.displayOrder,
+          basePrice: Number(item.base_price),
+          displayOrder: item.display_order,
           featured: item.featured,
           available: item.available,
           variants: (item.variants || []).map((variant: any) => ({
             id: variant.id,
-            itemId: variant.itemId,
-            variantName: variant.variantName,
-            priceModifier: Number(variant.priceModifier),
+            itemId: variant.item_id,
+            variantName: variant.variant_name,
+            priceModifier: Number(variant.price_modifier),
           })),
           images: (item.images || []).map((image: any) => ({
             id: image.id,
-            itemId: image.itemId,
-            imageUrl: image.imageUrl,
-            altText: image.altText,
-            isPrimary: image.isPrimary,
+            itemId: image.item_id,
+            imageUrl: image.image_url,
+            altText: image.alt_text,
+            isPrimary: image.is_primary,
           })),
         }))
     })) || [];
