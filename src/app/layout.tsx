@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://napolipizzeria.com'),
+  metadataBase: new URL('https://napolipizzeriacny.com'),
   title: "Napoli Pizzeria - Authentic NY-Style Pizza | Syracuse, NY",
   description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY. Family-owned since 2024. Order online for pickup and delivery.",
   keywords: "pizza, Italian food, Syracuse, NY, delivery, takeout, Napoli Pizzeria",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Napoli Pizzeria - Authentic NY-Style Pizza",
     description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY",
-    url: "https://napolipizzeria.com",
+    url: "https://napolipizzeriacny.com",
     siteName: "Napoli Pizzeria",
     images: [
       {
