@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://napolipizzeriacny.netlify.app'),
+  metadataBase: new URL('https://napolipizzeria.com'),
   title: "Napoli Pizzeria - Authentic NY-Style Pizza | Syracuse, NY",
   description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY. Family-owned since 2024. Order online for pickup and delivery.",
   keywords: "pizza, Italian food, Syracuse, NY, delivery, takeout, Napoli Pizzeria",
