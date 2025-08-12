@@ -46,8 +46,8 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'website@napoli-pizzeria.com', // You may need to verify this domain
-      to: ['ted@growwithagp.com'], // All forms go to Ted
+      from: 'onboarding@resend.dev', // Use Resend's verified domain for now
+      to: ['Campaniapizzeria.1@gmail.com'], // All forms go to Campania
       subject: subject,
       html: emailContent,
       replyTo: email,

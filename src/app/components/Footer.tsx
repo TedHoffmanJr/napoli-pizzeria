@@ -18,6 +18,7 @@ export default function Footer({ onOrderClick }: FooterProps) {
               width={260}
               height={80}
               className="h-20 w-auto mb-6"
+              style={{ width: 'auto' }}
             />
             <p className="font-inter text-soft-gray mb-4">
               Authentic NY-style pizza and Italian cuisine in Syracuse, NY. 

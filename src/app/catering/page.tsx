@@ -25,7 +25,7 @@ const cateringPackages = [
   {
     id: 2,
     name: "Office Catering",
-    description: "Professional catering for corporate events and meetings",
+    description: "Professional catering for corporate events and meetings (24 hour notice)",
     price: "Call for Pricing",
     includes: [
       "Assorted pizzas",
@@ -132,7 +132,7 @@ export default function Catering() {
               Catering That Sells More Pizza
             </h1>
             <p className="font-inter text-xl text-napoli-red font-semibold mb-6">
-              Perfect for Medical Centers • <a href="tel:315-218-5837" className="hover:underline">315-218-5837</a> • 48hr Notice Required
+              Perfect for Medical Centers • <a href="tel:315-218-5837" className="hover:underline">315-218-5837</a>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
               <a href="tel:315-218-5837" className="btn-primary text-xl px-12 py-4">
@@ -176,6 +176,7 @@ export default function Catering() {
                     src={pkg.image}
                     alt={pkg.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>
@@ -194,9 +195,11 @@ export default function Catering() {
                     <span className="font-inter font-bold text-napoli-red text-2xl">
                       {pkg.price}
                     </span>
-                    <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
-                      48HR NOTICE
-                    </span>
+                    {index < 2 && (
+                      <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
+                        24HR NOTICE
+                      </span>
+                    )}
                   </div>
                   
                   <div className="mb-4 p-3 bg-soft-gray rounded-lg">
@@ -393,19 +396,6 @@ export default function Catering() {
                 <li>• Flexible packages for any group size</li>
                 <li>• Competitive pricing</li>
                 <li>• Local business supporting the community</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-poppins text-2xl font-semibold text-dark-gray mb-4">
-                catering policies
-              </h3>
-              <ul className="font-inter text-medium-gray space-y-3">
-                <li>• 48-hour advance notice required</li>
-                <li>• 50% deposit required for confirmation</li>
-                <li>• Cancellation policy: 24 hours notice</li>
-                <li>• Delivery available within 10-mile radius</li>
-                <li>• Setup and cleanup included</li>
-                <li>• Dietary restrictions accommodated</li>
               </ul>
             </div>
           </div>

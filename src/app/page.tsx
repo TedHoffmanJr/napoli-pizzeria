@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import OrderModal from './components/OrderModal';
@@ -106,8 +107,8 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="mb-4">
-                      <span className="font-inter text-xs text-basil-green font-semibold bg-green-50 px-2 py-1 rounded">
-                        FRESH MADE
+                      <span className="font-inter text-xs text-napoli-red font-semibold bg-red-50 px-2 py-1 rounded">
+                        CUSTOMER FAVORITE
                       </span>
                     </div>
                   <button 
@@ -124,19 +125,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Simple CTA */}
-      <section className="py-8 bg-napoli-red text-pure-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-poppins text-2xl font-bold mb-6">
-            Ready to Order?
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => setIsOrderModalOpen(true)} className="btn-secondary text-lg px-8 py-3">
-              ORDER PIZZA NOW
-            </button>
-            <Link href="/menu" className="bg-pure-white text-napoli-red px-8 py-3 rounded-lg font-inter font-bold hover:bg-gray-100 transition-colors">
-              VIEW FULL MENU
-            </Link>
+      {/* Ready to Order with Mike's Photo */}
+      <section className="py-12 bg-napoli-red text-pure-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="font-poppins text-2xl font-bold">
+              Ready to Order?
+            </h2>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
+            <div>
+              <Image
+                src="/brand/mike_oven.webp"
+                alt="Mike Perrucci at the oven making fresh pizza"
+                width={400}
+                height={300}
+                className="rounded-lg shadow-lg"
+                style={{ height: 'auto' }}
+              />
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              <button onClick={() => setIsOrderModalOpen(true)} className="btn-secondary text-lg px-8 py-3">
+                ORDER PIZZA NOW
+              </button>
+              <Link href="/menu" className="bg-pure-white text-napoli-red px-8 py-3 rounded-lg font-inter font-bold hover:bg-gray-100 transition-colors text-center">
+                VIEW FULL MENU
+              </Link>
+            </div>
           </div>
         </div>
       </section>
