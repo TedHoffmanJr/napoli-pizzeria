@@ -383,22 +383,18 @@ export default function Catering() {
 
       {/* Additional Info */}
       <section className="py-16 bg-pure-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="font-poppins text-2xl font-semibold text-dark-gray mb-4">
-                why choose napoli for catering?
-              </h3>
-              <ul className="font-inter text-medium-gray space-y-3">
-                <li>• Authentic NY-style pizza and Italian cuisine</li>
-                <li>• Fresh, high-quality ingredients</li>
-                <li>• Professional setup and service</li>
-                <li>• Flexible packages for any group size</li>
-                <li>• Competitive pricing</li>
-                <li>• Local business supporting the community</li>
-              </ul>
-            </div>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="font-poppins text-2xl font-semibold text-dark-gray mb-8">
+            why choose napoli for catering?
+          </h3>
+          <ul className="font-inter text-medium-gray space-y-3 text-left inline-block">
+            <li>• Authentic NY-style pizza and Italian cuisine</li>
+            <li>• Fresh, high-quality ingredients</li>
+            <li>• Professional setup and service</li>
+            <li>• Flexible packages for any group size</li>
+            <li>• Competitive pricing</li>
+            <li>• Local business supporting the community</li>
+          </ul>
         </div>
       </section>
 

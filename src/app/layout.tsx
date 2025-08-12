@@ -24,13 +24,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://napolipizzeriacny.com'),
   title: "Napoli Pizzeria - Authentic NY-Style Pizza | Syracuse, NY",
-  description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY. Family-owned since 2024. Order online for pickup and delivery.",
-  keywords: "pizza, Italian food, Syracuse, NY, delivery, takeout, Napoli Pizzeria",
+  description: "Authentic NY-style pizza and Italian cuisine in Liverpool, North Syracuse and surrounding areas. Fresh lunch specials, delivery and takeout available daily.",
+  keywords: "pizza, Italian food, Syracuse, NY, Liverpool, North Syracuse, lunch specials, delivery, takeout, Napoli Pizzeria, walk-in specials",
   authors: [{ name: "Mike Perrucci" }],
   icons: '/brand/favicon-napoli.jpg',
   openGraph: {
     title: "Napoli Pizzeria - Authentic NY-Style Pizza",
-    description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY",
+    description: "Authentic NY-style pizza and Italian cuisine in Liverpool, North Syracuse and surrounding areas. Fresh lunch specials and delivery available.",
     url: "https://napolipizzeriacny.com",
     siteName: "Napoli Pizzeria",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Napoli Pizzeria - Authentic NY-Style Pizza",
-    description: "Authentic NY-style pizza and Italian cuisine in Syracuse, NY",
+    description: "Authentic NY-style pizza and Italian cuisine in Liverpool, North Syracuse and surrounding areas. Fresh lunch specials and delivery available.",
     images: ["/brand/social-preview.jpg"],
   },
   robots: {
