@@ -57,7 +57,7 @@ export default function Footer({ onOrderClick }: FooterProps) {
               </div>
               <div className="flex justify-between">
                 <span>Friday</span>
-                <span>11am - 9pm</span>
+                <span>11am - 8pm</span>
               </div>
               <div className="flex justify-between">
                 <span>Saturday</span>

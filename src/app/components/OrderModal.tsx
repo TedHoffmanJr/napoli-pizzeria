@@ -175,7 +175,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 </div>
                 <div className="flex justify-between">
                   <span>Fri:</span>
-                  <span>11am - 9pm</span>
+                  <span>11am - 8pm</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sat:</span>
