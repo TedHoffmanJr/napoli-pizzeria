@@ -37,7 +37,7 @@ napoli/
 
 ## Key Features
 
-- **Order Modal**: Replaces separate order page with modal containing Toast, Uber Eats, Postmates links
+- **Order Modal**: Replaces separate order page with modal containing Toast, Uber Eats, DoorDash links
 - **Smart Image Mapping**: Automatically matches menu items to correct food photos with intelligent fallbacks
 - **Mobile-First Design**: Fully responsive with optimized mobile experience
 - **Brand Consistency**: Implements Poppins/Alegreya/Inter typography per brand guidelines

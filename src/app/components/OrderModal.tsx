@@ -46,9 +46,9 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
       type: "delivery"
     },
     {
-      name: "Postmates",
-      description: "Order for delivery through Postmates",
-      url: "https://www.postmates.com/store/napoli-pizzeria-taft-rd/-rMPBrC3UmazDQBghIZzug",
+      name: "DoorDash",
+      description: "Order for delivery through DoorDash",
+      url: "https://www.doordash.com/store/napoli-pizzeria-syracuse-31031912/48708547/",
       primary: false,
       type: "delivery"
     }
@@ -119,8 +119,8 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                           </span>
                         )}
                         <span className={`text-xs px-2 py-1 rounded-full font-inter font-semibold ${
-                          option.type === 'pickup' 
-                            ? 'bg-blue-100 text-blue-800' 
+                          option.type === 'pickup'
+                            ? 'bg-blue-100 text-blue-800'
                             : 'bg-orange-100 text-orange-800'
                         }`}>
                           {option.type === 'pickup' ? 'Pickup' : 'Delivery'}
@@ -133,10 +133,10 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                       </p>
                     </div>
                     <div className="ml-4">
-                      <svg 
-                        className={`h-5 w-5 ${option.primary ? 'text-pure-white' : 'text-napoli-red'}`} 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
+                      <svg
+                        className={`h-5 w-5 ${option.primary ? 'text-pure-white' : 'text-napoli-red'}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
