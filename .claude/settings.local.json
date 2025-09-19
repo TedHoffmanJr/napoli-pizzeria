@@ -12,7 +12,13 @@
       "WebFetch(domain:doc.toasttab.com)",
       "Bash(find:*)",
       "Bash(npm audit:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(curl:*)",
+      "Bash(dir:*)",
+      "Read(//c/**)",
+      "Bash(magick:*)",
+      "Bash(powershell:*)"
     ],
     "deny": []
   }
