@@ -232,17 +232,17 @@ export default function Menu() {
         {menuData.map((category) => (
           <div key={category.name} id={`category-${category.name}`} className="mb-16">
             <div id={`category-header-${category.name}`} className="text-center mb-8 pt-8">
-              <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2 flex items-center justify-center gap-3">
+              <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-dark-gray mb-2">
                 {category.name}
-                {(category.name === 'Pizza' || category.name === 'Specialty Pizza') && (
-                  <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                    🌾 GF Available
-                  </span>
-                )}
               </h2>
               {category.subtitle && (
-                <p className="font-inter text-lg text-napoli-red font-semibold mb-3">
+                <p className="font-inter text-lg text-napoli-red font-semibold mb-3 flex items-center justify-center gap-3">
                   {category.subtitle}
+                  {(category.name === 'Pizza' || category.name === 'Specialty Pizza' || category.name === 'Entrees' || category.name === 'Baked Dishes') && (
+                    <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
+                      🌾 GF Available
+                    </span>
+                  )}
                 </p>
               )}
               
