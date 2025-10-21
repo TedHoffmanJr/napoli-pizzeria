@@ -301,6 +301,14 @@ export default function Menu() {
                       <h3 className="font-poppins text-xl font-bold text-dark-gray mb-1">
                         {item.name}
                       </h3>
+                      {item.specialNotice && (
+                        <div className="mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                          <p className="font-inter text-xs text-amber-800 font-semibold flex items-center gap-1">
+                            <span>⏱️</span>
+                            <span>{item.specialNotice}</span>
+                          </p>
+                        </div>
+                      )}
                       <p className="font-inter text-medium-gray text-sm leading-relaxed line-clamp-2">
                         {item.description}
                       </p>

@@ -3,6 +3,7 @@ export interface MenuItem {
   name: string;
   italian_name?: string;
   description?: string;
+  specialNotice?: string;
   category: string;
   base_price: number;
   size_variants: Record<string, number>;
@@ -34,6 +35,7 @@ export interface DbMenuItem {
   name: string;
   italianName?: string;
   description?: string;
+  specialNotice?: string;
   basePrice: number;
   displayOrder: number;
   featured: boolean;
