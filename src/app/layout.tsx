@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import { Alegreya_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -67,6 +68,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${alegreyaSans.variable} ${inter.variable} antialiased`}
       >
         {children}
+        <Script src="/promo-banner.js" strategy="afterInteractive" />
       </body>
     </html>
   );
