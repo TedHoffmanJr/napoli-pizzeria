@@ -25,9 +25,9 @@
     <div id="napoli-promo-inner">
       <div class="track">
         <div class="scroll">
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. <a href="${TOAST_URL}" rel="noopener">Order pickup on Toast</a>.</span>
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. <a href="${TOAST_URL}" rel="noopener">Order pickup on Toast</a>.</span>
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. <a href="${TOAST_URL}" rel="noopener">Order pickup on Toast</a>.</span>
+          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
+          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
+          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
         </div>
       </div>
       <button class="close" aria-label="Close">✕</button>
