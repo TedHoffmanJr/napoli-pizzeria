@@ -287,6 +287,13 @@ export default function Menu() {
                         </span>
                       </div>
                     )}
+                    {item.badge && (
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className="bg-amber-600 text-pure-white text-xs px-3 py-1 rounded-full font-inter font-bold">
+                          {item.badge}
+                        </span>
+                      </div>
+                    )}
                     <MenuImage
                       src={item.images[0] || '/brand/social-preview.jpg'}
                       alt={item.name}

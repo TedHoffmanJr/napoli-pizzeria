@@ -78,6 +78,7 @@ export async function GET() {
           italian_name: item.italian_name,
           description: item.description,
           specialNotice: item.special_notice,
+          badge: item.badge,
           category: category.name,
           base_price: Number(item.base_price),
           size_variants: (item.variants || []).reduce((acc: any, variant: any) => {
