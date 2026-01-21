@@ -18,7 +18,8 @@
       "Bash(dir:*)",
       "Read(//c/**)",
       "Bash(magick:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": []
   }

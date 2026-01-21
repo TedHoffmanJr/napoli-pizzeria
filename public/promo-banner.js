@@ -3,9 +3,9 @@
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
   
   const TOAST_URL = "https://www.toasttab.com/local/order/napoli-pizzeria-syracuse-5194-west-taft-road-c/r-0abcda36-6edb-4213-804a-81c9fba9f522";
-  // Nov 1, 2025 is still EDT (-04:00); anchor to America/New_York local time:
-  const END = Date.parse("2025-11-01T23:59:59-04:00");
-  const KEY = "napoliPromoDismissed";
+  // Super Bowl Sunday 2026 is EST (-05:00); anchor to America/New_York local time:
+  const END = Date.parse("2026-02-09T23:59:59-05:00");
+  const KEY = "napoliPromoSB2026";
   
   // Debug helper: Clear dismissal to test banner again
   // Call: window.__clearNapoliPromo() in console
@@ -25,9 +25,9 @@
     <div id="napoli-promo-inner">
       <div class="track">
         <div class="scroll">
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
-          <span>🎃 10% off your call-ahead pickup — 10/31 & 11/1 only. Call to order.</span>
+          <span>🏈 Open Super Bowl Sunday, Feb 9th! Call ahead to pre-order your game day feast.</span>
+          <span>🏈 Open Super Bowl Sunday, Feb 9th! Call ahead to pre-order your game day feast.</span>
+          <span>🏈 Open Super Bowl Sunday, Feb 9th! Call ahead to pre-order your game day feast.</span>
         </div>
       </div>
       <button class="close" aria-label="Close">✕</button>
