@@ -37,16 +37,16 @@ export default function Story() {
                 About Us – Napoli Pizzeria
               </h1>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                At Napoli Pizzeria, we believe pizza is more than food — it&apos;s a craft, a conversation, and a connection to tradition.
+                At Napoli Pizzeria, we believe pizza is more than food. It&apos;s a craft, a conversation, and a connection to tradition.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                Owner and head pizzaiolo <span className="font-semibold text-dark-gray">Mike Perrucci</span> has spent decades in the pizza industry, perfecting his dough, mastering old-school techniques, and staying true to the fundamentals that make a great pie unforgettable. Every pizza that leaves the oven at Napoli is made with purpose — using quality ingredients, consistent technique, and just the right balance of heart and heat.
+                Owner and head pizzaiolo <span className="font-semibold text-dark-gray">Mike Perrucci</span> has spent decades in the pizza industry, perfecting his dough, mastering old-school techniques, and staying true to the fundamentals that make a great pie unforgettable. Every pizza that leaves the oven at Napoli is made with purpose, using quality ingredients, consistent technique, and just the right balance of heart and heat.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                We&apos;re proud to serve <span className="font-semibold text-dark-gray">authentic NY-style pizza</span> that reflects the best of both worlds: big city flavor, small town hospitality. Whether you&apos;re grabbing a slice on your lunch break, feeding the whole family, or catering a group at the hospital down the road — we make sure every order hits the mark.
+                We&apos;re proud to serve <span className="font-semibold text-dark-gray">authentic NY-style pizza</span> that reflects the best of both worlds: big city flavor, small town hospitality. Whether you&apos;re grabbing a slice on your lunch break, feeding the whole family, or catering a group at the hospital down the road, we make sure every order hits the mark.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
-                Mike&apos;s always around — tossing dough, checking the ovens, or chatting with customers at the counter. His philosophy is simple: <span className="italic">&quot;Make the kind of pizza you&apos;d be proud to serve your friends and family — every single time.&quot;</span> And it shows.
+                Mike&apos;s always around, tossing dough, checking the ovens, or chatting with customers at the counter. His philosophy is simple: <span className="italic">&quot;Make the kind of pizza you&apos;d be proud to serve your friends and family, every single time.&quot;</span> And it shows.
               </p>
               <p className="font-inter text-lg text-medium-gray leading-relaxed">
                 So if you&apos;re nearby, stop in and say hey. We&apos;d love to make you something great.

@@ -2,7 +2,6 @@
   // Only run in browser environment
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
   
-  const TOAST_URL = "https://www.toasttab.com/local/order/napoli-pizzeria-syracuse-5194-west-taft-road-c/r-0abcda36-6edb-4213-804a-81c9fba9f522";
   // Super Bowl Sunday 2026 is EST (-05:00); anchor to America/New_York local time:
   const END = Date.parse("2026-02-09T23:59:59-05:00");
   const KEY = "napoliPromoSB2026";
@@ -49,4 +48,3 @@
   const mount = () => document.body.prepend(bar);
   (document.readyState === "loading") ? document.addEventListener("DOMContentLoaded", mount) : mount();
 })();
-

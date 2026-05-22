@@ -25,30 +25,16 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
 
   const orderingOptions = [
     {
-      name: "Toast Online Ordering",
-      description: "Order directly from Napoli - Primary ordering platform",
-      url: "https://www.toasttab.com/local/order/napoli-pizzeria-syracuse-5194-west-taft-road-c/r-0abcda36-6edb-4213-804a-81c9fba9f522",
-      primary: true,
-      type: "pickup"
-    },
-    {
-      name: "Toast Delivery",
-      description: "Delivery through Toast platform",
-      url: "https://www.toasttab.com/local/order/napoli-pizzeria-syracuse-5194-west-taft-road-c/r-0abcda36-6edb-4213-804a-81c9fba9f522?diningOption=delivery",
-      primary: false,
-      type: "delivery"
-    },
-    {
       name: "Uber Eats",
       description: "Order for delivery through Uber Eats",
-      url: "https://www.ubereats.com/store/napoli-pizzeria-taft-rd/-rMPBrC3UmazDQBghIZzug",
-      primary: false,
+      url: "https://www.ubereats.com/store/napoli-pizzeria-taft-rd/-rMPBrC3UmazDQBghIZzug?utm_source=napoli_website&utm_medium=referral&utm_campaign=order_online&utm_content=order_modal",
+      primary: true,
       type: "delivery"
     },
     {
       name: "DoorDash",
       description: "Order for delivery through DoorDash",
-      url: "https://www.doordash.com/store/napoli-pizzeria-syracuse-31031912/48708547/",
+      url: "https://www.doordash.com/store/napoli-pizzeria-syracuse-31031912/109548190/?utm_source=napoli_website&utm_medium=referral&utm_campaign=order_online&utm_content=order_modal",
       primary: false,
       type: "delivery"
     }
