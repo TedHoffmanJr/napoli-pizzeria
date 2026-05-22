@@ -1,12 +1,12 @@
-# PowerShell Script to Convert Menu Images for Toast POS
+# PowerShell Script to Convert Menu Images
 # Converts WebP images to JPEG with 750x450px dimensions and optimized file size
 
 # Define paths
 $sourceDir = "public\menu-images-compressed"
-$outputDir = "public\menu-images-toast"
+$outputDir = "public\menu-images-ordering"
 $magickPath = "C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"
 
-Write-Host "Starting batch conversion for Toast POS..." -ForegroundColor Green
+Write-Host "Starting batch conversion for online ordering..." -ForegroundColor Green
 Write-Host "Source: $sourceDir" -ForegroundColor Yellow
 Write-Host "Output: $outputDir" -ForegroundColor Yellow
 
@@ -62,4 +62,4 @@ Get-ChildItem -Path $outputDir -Recurse -Filter "*.jpg" | Group-Object Directory
 }
 
 Write-Host ""
-Write-Host "All images are now ready for Toast POS upload!" -ForegroundColor Green
+Write-Host "All images are now ready for online ordering upload!" -ForegroundColor Green

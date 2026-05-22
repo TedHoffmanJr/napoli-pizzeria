@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "test": "node --test --import tsx tests/order-modal.test.tsx",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
