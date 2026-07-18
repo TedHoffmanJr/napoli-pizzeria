@@ -5,16 +5,6 @@ import Image from 'next/image';
 // Mock specials data - in a real app, this would come from Supabase
 const specials = [
   {
-    id: 1,
-    name: "Lunch Special",
-    description: "Any 12\" pizza with 2 toppings + 2 sodas",
-    price: 15.99,
-    originalPrice: 22.99,
-    validUntil: "2024-12-31",
-    isLimited: false,
-    category: "Lunch"
-  },
-  {
     id: 2,
     name: "Family Night",
     description: "Large 16\" pizza with 3 toppings + garlic knots + 2-liter soda",
@@ -245,7 +235,6 @@ export default function Specials() {
               <ul className="font-inter text-medium-gray space-y-2">
                 <li>• Medical professionals receive 20% off orders over $25</li>
                 <li>• Family night specials every Friday</li>
-                <li>• Lunch specials Monday through Friday</li>
                 <li>• Weekend specials on select items</li>
                 <li>• Catering discounts for large orders</li>
               </ul>
