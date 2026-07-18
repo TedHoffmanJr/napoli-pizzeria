@@ -52,7 +52,11 @@ export default function Footer({ onOrderClick }: FooterProps) {
             <h3 className="font-alegreya text-lg font-bold mb-4 uppercase">Hours</h3>
             <div className="font-inter text-soft-gray space-y-2">
               <div className="flex justify-between">
-                <span>Monday - Saturday</span>
+                <span>Monday - Thursday</span>
+                <span>3pm - 8pm</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Friday - Saturday</span>
                 <span>11am - 8pm</span>
               </div>
               <div className="flex justify-between">
