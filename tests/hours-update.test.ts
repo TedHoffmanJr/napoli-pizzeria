@@ -27,6 +27,13 @@ describe('new business hours', () => {
     assert.match(banner, /New hours starting Monday, July 20/);
   });
 
+  it('does not advertise lunch specials during the new weekday hours', () => {
+    const specials = readSource('src', 'app', 'specials', 'page.tsx');
+    const layout = readSource('src', 'app', 'layout.tsx');
+
+    assert.doesNotMatch(specials, /lunch special/i);
+    assert.doesNotMatch(layout, /lunch specials/i);
+  });
   it('keeps the removed items unavailable in the repository menu snapshot', () => {
     const menu = readSource('src', 'app', 'lib', 'data', 'menu.csv');
 
