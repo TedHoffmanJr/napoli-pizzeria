@@ -11,7 +11,7 @@ export default function HoursBanner() {
     <aside className="bg-napoli-red text-pure-white" aria-label="New hours announcement">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
         <p className="font-inter text-sm sm:text-base font-semibold">
-          New hours starting Monday, July 20: Monday-Thursday 3-8pm, Friday-Saturday 11am-8pm. Sunday closed.
+          New hours starting Monday, July 20: Monday-Wednesday 3-8pm, Thursday-Saturday 11am-8pm. Sunday closed.
         </p>
       </div>
     </aside>

@@ -12,19 +12,19 @@ describe('new business hours', () => {
     const footer = readSource('src', 'app', 'components', 'Footer.tsx');
     const orderModal = readSource('src', 'app', 'components', 'OrderModal.tsx');
 
-    assert.match(home, /Mon-Thu: 3pm-8pm/);
-    assert.match(home, /Fri-Sat: 11am-8pm/);
-    assert.match(footer, /Monday - Thursday/);
-    assert.match(footer, /Friday - Saturday/);
-    assert.match(orderModal, /Mon-Thu:/);
-    assert.match(orderModal, /Fri-Sat:/);
+    assert.match(home, /Mon-Wed: 3pm-8pm/);
+    assert.match(home, /Thu-Sat: 11am-8pm/);
+    assert.match(footer, /Monday - Wednesday/);
+    assert.match(footer, /Thursday - Saturday/);
+    assert.match(orderModal, /Mon-Wed:/);
+    assert.match(orderModal, /Thu-Sat:/);
   });
 
   it('announces the new hours until August 20, 2026', () => {
     const banner = readSource('src', 'app', 'components', 'HoursBanner.tsx');
 
     assert.match(banner, /2026-08-20T00:00:00-04:00/);
-    assert.match(banner, /New hours starting Monday, July 20/);
+    assert.match(banner, /Monday-Wednesday 3-8pm, Thursday-Saturday 11am-8pm/);
   });
 
   it('does not advertise lunch specials during the new weekday hours', () => {
