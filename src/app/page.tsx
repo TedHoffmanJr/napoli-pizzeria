@@ -179,7 +179,7 @@ export default function Home() {
             <div>
               <h3 className="font-inter font-bold text-dark-gray mb-2">🕒 HOURS</h3>
               <p className="font-inter text-sm text-medium-gray">
-                Mon-Wed: 3pm-8pm; Thu-Sat: 11am-8pm; Sun: Closed
+                Mon-Sat: 11am-8pm; Sun: Closed
               </p>
             </div>
             <div>
