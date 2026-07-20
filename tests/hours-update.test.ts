@@ -6,28 +6,29 @@ import { describe, it } from 'node:test';
 const readSource = (...segments: string[]) =>
   readFileSync(join(process.cwd(), ...segments), 'utf8');
 
-describe('new business hours', () => {
-  it('shows the new hours everywhere customers can find them', () => {
+describe('business hours', () => {
+  it('shows the current hours everywhere customers can find them', () => {
     const home = readSource('src', 'app', 'page.tsx');
     const footer = readSource('src', 'app', 'components', 'Footer.tsx');
     const orderModal = readSource('src', 'app', 'components', 'OrderModal.tsx');
 
-    assert.match(home, /Mon-Wed: 3pm-8pm/);
-    assert.match(home, /Thu-Sat: 11am-8pm/);
-    assert.match(footer, /Monday - Wednesday/);
-    assert.match(footer, /Thursday - Saturday/);
-    assert.match(orderModal, /Mon-Wed:/);
-    assert.match(orderModal, /Thu-Sat:/);
+    assert.match(home, /Mon-Sat: 11am-8pm/);
+    assert.doesNotMatch(home, /3pm-8pm/);
+    assert.match(footer, /Monday - Saturday/);
+    assert.doesNotMatch(footer, /3pm - 8pm/);
+    assert.match(orderModal, /Mon-Sat:/);
+    assert.doesNotMatch(orderModal, /3pm - 8pm/);
   });
 
-  it('announces the new hours until August 20, 2026', () => {
+  it('announces lunch hours for one week', () => {
     const banner = readSource('src', 'app', 'components', 'HoursBanner.tsx');
 
-    assert.match(banner, /2026-08-20T00:00:00-04:00/);
-    assert.match(banner, /Monday-Wednesday 3-8pm, Thursday-Saturday 11am-8pm/);
+    assert.match(banner, /2026-07-27T00:00:00-04:00/);
+    assert.match(banner, /Lunch is back all week!/);
+    assert.match(banner, /Monday-Saturday from 11am-8pm/);
   });
 
-  it('does not advertise lunch specials during the new weekday hours', () => {
+  it('does not restore unverified lunch-special claims', () => {
     const specials = readSource('src', 'app', 'specials', 'page.tsx');
     const layout = readSource('src', 'app', 'layout.tsx');
 

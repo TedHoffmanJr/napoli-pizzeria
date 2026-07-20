@@ -2,6 +2,11 @@
 
 All meaningful shipped or ready-for-review changes for the Napoli Pizzeria site.
 
+## 2026-07-20
+
+- Restored the website hours to Monday-Saturday, 11am-8pm; Sunday closed.
+- Replaced the new-hours banner with a lunch announcement that automatically disappears on July 27, 2026.
+
 ## 2026-07-19
 
 - Corrected the new hours to Monday-Wednesday, 3pm-8pm; Thursday-Saturday, 11am-8pm; Sunday closed.

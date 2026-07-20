@@ -156,11 +156,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
               <h4 className="font-alegreya text-sm font-bold uppercase text-dark-gray mb-2">Hours</h4>
               <div className="font-inter text-xs text-medium-gray space-y-1">
                 <div className="flex justify-between">
-                  <span>Mon-Wed:</span>
-                  <span>3pm - 8pm</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Thu-Sat:</span>
+                  <span>Mon-Sat:</span>
                   <span>11am - 8pm</span>
                 </div>
                 <div className="flex justify-between">
